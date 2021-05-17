@@ -28,12 +28,18 @@ export const Categories = {
 }
 
 export function getQuestions(amount, category, difficulty = 'medium', type = 'multiple') {
-    return axios.get('https://opentdb.com/api.php', {
-        params: {
-            amount: amount,
-            category: category,
-            difficulty: difficulty,
-            type: type
-        }
-    })
+    return new Promise((resolve, reject) => {
+        axios.get('https://opentdb.com/api.php', {
+            params: {
+                amount: amount,
+                category: category,
+                difficulty: difficulty,
+                type: type
+            }
+        })
+        .then(res => {
+            resolve(res.data.results)
+        })
+        .catch(err => reject(err))
+    }) 
 }
