@@ -1,5 +1,6 @@
 import Home from "./Home";
 import About from "./About";
+import Game from "./components/Game"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
             <Switch>
               <Route path="/about">
                 <About />
+              </Route>
+              <Route path="/game">
+                <Game />
               </Route>
               <Route path="/">
                 <Home />
