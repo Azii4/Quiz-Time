@@ -1,7 +1,10 @@
+import StartPage from "./StartPage";
+
 function App() {
   return (
     <div className="App">
-      <h1>Quiz-Time</h1>
+      <h1 className="logo">Quiz-Time</h1>
+      <StartPage />
     </div>
   );
 }
