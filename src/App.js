@@ -9,19 +9,20 @@ function App() {
           <Link to="/">
             <h1 className="logo">Quiz-Time</h1>
           </Link>
-          <div className="linkWrapper">
+          <div className="Wrapper">
             <Link to="/about" className="about">
               About
             </Link>
+
+            <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
           </div>
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
         </div>
       </Router>
     </div>

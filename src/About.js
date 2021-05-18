@@ -2,7 +2,7 @@ import React from "react";
 
 export default function About() {
   return (
-    <div className="wrapper">
+    <>
       <h1>About</h1>
       <p className="P-wrapper">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
@@ -43,6 +43,6 @@ export default function About() {
         tellus vel justo pharetra, et mollis lacus pellentesque. Morbi non
         dignissim odio.
       </p>
-    </div>
+    </>
   );
 }
