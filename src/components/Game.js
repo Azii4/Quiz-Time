@@ -4,9 +4,9 @@ function Game() {
     return (
         <div className="game-container">
             <div className="game-upper">
-            <div className="question-container">
-                <p>What is the answer to this question?</p>
-            </div>
+                <div className="question-container">
+                    <p>What is the answer to this question?</p>
+                </div>
             </div>
             <div className="game-lower">
                 <div className="answer-container">
