@@ -6,7 +6,6 @@ import { FormControlLabel, makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
-import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
 const useStyles = makeStyles({
