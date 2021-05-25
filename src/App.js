@@ -1,15 +1,14 @@
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Game from "./components/Game";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Leaderboard from "./components/Leaderboard";
+
 function App() {
   return (
     <div className="App">
       <Router>
         <div>
-          <Link to="/">
-            <h1 className="logo">Quiz-Time</h1>
-          </Link>
           <div className="Wrapper">
             <Link to="/about" className="about">
               About
@@ -21,6 +20,9 @@ function App() {
               </Route>
               <Route path="/game">
                 <Game />
+              </Route>
+              <Route path="/leaderboard">
+                <Leaderboard />
               </Route>
               <Route path="/">
                 <Home />
