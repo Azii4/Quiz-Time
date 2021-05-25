@@ -15,13 +15,17 @@ const useStyles = makeStyles({
     marginBottom: 20,
     display: "block",
   },
+  btn: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
 });
 
 export default function Home() {
   const classes = useStyles();
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(false);
-  const [category, setCategory] = useState("movies");
+  const [category, setCategory] = useState("all");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,6 +62,11 @@ export default function Home() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
+          <FormControlLabel
+            value="all"
+            control={<Radio />}
+            label="All Categories"
+          />
           <FormControlLabel value="movies" control={<Radio />} label="Movies" />
           <FormControlLabel value="music" control={<Radio />} label="Music" />
           <FormControlLabel
@@ -92,16 +101,17 @@ export default function Home() {
           PLAY
         </Button>
       </form>
+
       <Button
         href="/leaderboard"
-        className={classes.field}
+        className={classes.btn}
         type="submit"
         variant="contained"
         color="primary"
         align="center"
         fullWidth
       >
-        LEADERBOARD{" "}
+        LEADERBOARD
       </Button>
     </Container>
   );
