@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Regular from "./Regular";
+import Standard from "./Standard";
 import TimeAttack from "./TimeAttack";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -78,12 +78,12 @@ export default function NavTabs() {
           onChange={handleChange}
           aria-label="nav tabs example"
         >
-          <LinkTab label="Regular" href="/regular" {...a11yProps(0)} />
+          <LinkTab label="Standard" href="/standard" {...a11yProps(0)} />
           <LinkTab label="Time Attack" href="/timeAttack" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Regular />
+        <Standard />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <TimeAttack />
