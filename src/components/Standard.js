@@ -1,4 +1,5 @@
 import React from "react";
+
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -27,26 +28,13 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 function loadStandard() {
-  var todayDate = new Date().toISOString().slice(0, 10);
-  const standardLeader = [
-    {
-      name: "Peter Dinkelberg",
-      Category: "Video Game",
-      Date: todayDate,
-      Score: 10,
-    },
-    {
-      name: "Dinkelberg",
-      Category: "all",
-      Date: todayDate,
-      Score: 9,
-    },
-  ];
+  let aValue = localStorage.getItem("Standard LeaderBoard");
 
-  let jsonStandardLeader = JSON.stringify(standardLeader);
-  localStorage.setItem("Standard LeaderBoard", jsonStandardLeader);
-
-  return standardLeader;
+  if (aValue == null) {
+    return [];
+  } else {
+    return JSON.parse(aValue);
+  }
 }
 
 const useStyles = makeStyles({
@@ -57,7 +45,6 @@ const useStyles = makeStyles({
 
 export default function Standard() {
   const classes = useStyles();
-
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
