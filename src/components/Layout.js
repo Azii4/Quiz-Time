@@ -1,12 +1,11 @@
 import React from "react";
-import { Grid, makeStyles, Container } from "@material-ui/core";
+import { Grid, makeStyles, Container, Paper } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  page: {
-    background: "#FFFFFF",
-    opacity: 0.8,
-    width: "40%",
+  paper: {
+    backgroundColor: "#ffffff99",
     marginTop: 40,
+    width: 500,
   },
 });
 
@@ -16,11 +15,11 @@ export default function Layout({ children }) {
   return (
     <Container>
       <Grid container align="center">
-        <Grid item xs={0} s={3} m={3}></Grid>
         <Grid item xs={12} s={6} m={6}>
-          <div className={classes.page}>{children}</div>
+          <Paper elevation={3} variant="outlined" className={classes.paper}>
+            <div>{children}</div>
+          </Paper>
         </Grid>
-        <Grid item xs={0} s={3} m={3}></Grid>
       </Grid>
     </Container>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import { FormControlLabel, makeStyles } from "@material-ui/core";
+import { ButtonGroup, FormControlLabel, makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
@@ -90,15 +90,15 @@ export default function Home() {
           />
         </RadioGroup>
 
-        <Button
-          type="submit"
+        <ButtonGroup
           variant="contained"
           color="primary"
-          align="center"
+          aria-label="contained primary button group"
           fullWidth
         >
-          PLAY
-        </Button>
+          <Button type="submit">STANDARD GAME</Button>
+          <Button type="submit">TIME ATTACK GAME</Button>
+        </ButtonGroup>
       </form>
 
       <Button
