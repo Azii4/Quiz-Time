@@ -1,17 +1,24 @@
 import "../css/game.css"
 import {useState, useEffect} from 'react'
 import {getQuestions, Categories} from '../modules/triviaApi'
+import { LocalConvenienceStoreOutlined } from "@material-ui/icons"
+
+const questionAmount = 10;
 
 function Game() {
     const [questionList, setQuestionList] = useState([])
     const [questionCounter, setQuestionCounter] = useState(0)
     const [answerList, setAnswerList] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
+    const [score, setScore] = useState(0)
+    const [gameOver, setGameOver] = useState(false)
 
     const refreshQuestions = () => {
         setIsLoaded(false)
         setQuestionCounter(0)
-        getQuestions(10, Categories.GENERAL_KNOWLEDGE)
+        setGameOver(false)
+        setScore(0)
+        getQuestions(questionAmount, Categories.TELEVISION)
         .then(data => {
             console.log(data)
             setQuestionList(data.map(elem => ({
@@ -20,13 +27,14 @@ function Game() {
                 incorrectAnswers: elem.incorrect_answers
             })))
             setIsLoaded(true)
-            updateAnswers()
         })
         .catch(err => console.log(err))
     }
 
     const updateAnswers = () => {
         if (questionList[0] !== undefined) {
+            console.log(questionCounter)
+            console.log(questionList)
             let answers = [...questionList[questionCounter].incorrectAnswers, questionList[questionCounter].correctAnswer]
             for (var i = answers.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1));
@@ -47,11 +55,14 @@ function Game() {
     }, [questionList, questionCounter])
 
     const handleButton = (e) => {
-        console.log(e.target.innerHTML)
-        if(questionCounter < 10)
+        if(questionCounter < questionAmount - 1) {
+            if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
+                setScore(score + 1)
+            }
             setQuestionCounter(questionCounter + 1)
-        else {
-            refreshQuestions()
+            updateAnswers()
+        } else {
+            setGameOver(true)
         }
     }
 
