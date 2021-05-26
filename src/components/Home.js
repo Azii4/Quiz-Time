@@ -7,6 +7,10 @@ import TextField from "@material-ui/core/TextField";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import FormLabel from "@material-ui/core/FormLabel";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles({
   field: {
@@ -89,6 +93,21 @@ export default function Home() {
             label="Animals"
           />
         </RadioGroup>
+
+        <FormControl variant="filled" className={classes.formControl} fullWidth>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            label="Categories"
+          >
+            <MenuItem value="all">All Categories</MenuItem>
+            <MenuItem value="movies">Movies</MenuItem>
+            <MenuItem value="music">Music</MenuItem>
+            <MenuItem value="videoGames">Video Games</MenuItem>
+          </Select>
+        </FormControl>
 
         <ButtonGroup
           variant="contained"
