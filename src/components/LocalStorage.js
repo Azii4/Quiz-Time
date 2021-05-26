@@ -26,15 +26,19 @@ function saveTimeAttack() {
       name: "bob",
       Category: "Video Game",
       Date: todayDate,
+      time: "1:20",
       Score: 10,
     },
     {
       name: "stewart",
       Category: "all",
       Date: todayDate,
+      time: "1:36",
       Score: 9,
     },
   ];
   let jsonTimeAttackLeader = JSON.stringify(TimeAttackLeader);
   localStorage.setItem("TimeAttack LeaderBoard", jsonTimeAttackLeader);
 }
+saveStandard();
+saveTimeAttack();
