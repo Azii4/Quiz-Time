@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import { ButtonGroup, FormControlLabel, makeStyles } from "@material-ui/core";
+import { ButtonGroup, makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
@@ -29,6 +25,7 @@ export default function Home() {
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState(false);
   const [category, setCategory] = useState("all");
+  const [button, setButton] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,44 +57,8 @@ export default function Home() {
           error={nameError}
         />
 
-        <FormLabel className={classes.field}>Choose Category</FormLabel>
-        <RadioGroup
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <FormControlLabel
-            value="all"
-            control={<Radio />}
-            label="All Categories"
-          />
-          <FormControlLabel value="movies" control={<Radio />} label="Movies" />
-          <FormControlLabel value="music" control={<Radio />} label="Music" />
-          <FormControlLabel
-            value="video games"
-            control={<Radio />}
-            label="Video Games"
-          />
-          <FormControlLabel
-            value="history"
-            control={<Radio />}
-            label="History"
-          />
-          <FormControlLabel
-            value="geography"
-            control={<Radio />}
-            label="Geography"
-          />
-          <FormControlLabel
-            value="animals"
-            control={<Radio />}
-            label="Animals"
-          />
-        </RadioGroup>
-
         <FormControl variant="filled" className={classes.formControl} fullWidth>
           <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             label="Categories"
@@ -106,17 +67,27 @@ export default function Home() {
             <MenuItem value="movies">Movies</MenuItem>
             <MenuItem value="music">Music</MenuItem>
             <MenuItem value="videoGames">Video Games</MenuItem>
+            <MenuItem value="history">History</MenuItem>
+            <MenuItem value="geography">Geography</MenuItem>
+            <MenuItem value="animals">Animals</MenuItem>
           </Select>
         </FormControl>
 
         <ButtonGroup
+          value={button}
+          onClick={(e) => setButton(e.target.value)}
           variant="contained"
           color="primary"
           aria-label="contained primary button group"
           fullWidth
+          label="Buttons"
         >
-          <Button type="submit">STANDARD GAME</Button>
-          <Button type="submit">TIME ATTACK GAME</Button>
+          <Button value="standard" type="submit">
+            STANDARD
+          </Button>
+          <Button value="timeAttack" type="submit">
+            TIME ATTACK
+          </Button>
         </ButtonGroup>
       </form>
 

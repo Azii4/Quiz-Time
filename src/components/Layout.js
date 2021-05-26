@@ -5,7 +5,8 @@ const useStyles = makeStyles({
   paper: {
     backgroundColor: "#ffffff99",
     marginTop: 40,
-    width: 500,
+    maxWidth: 800,
+    minWidth: 350,
   },
 });
 
