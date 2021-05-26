@@ -1,24 +1,26 @@
 import "../css/game.css"
 import {useState, useEffect} from 'react'
 import {getQuestions, Categories} from '../modules/triviaApi'
-import { LocalConvenienceStoreOutlined } from "@material-ui/icons"
 
 const questionAmount = 10;
 
-function Game() {
+function Game(props) {
     const [questionList, setQuestionList] = useState([])
     const [questionCounter, setQuestionCounter] = useState(0)
     const [answerList, setAnswerList] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
     const [score, setScore] = useState(0)
     const [gameOver, setGameOver] = useState(false)
+    const [startTime, setStartTime] = useState(0)
+    const [totalTime, setTotalTime] = useState(0)
+    const [gameMode, setGameMode] = useState(props.gamemode ?? 0) // Tanken är att ha 0 för standard och 1 för timeattack
 
-    const refreshQuestions = () => {
+    const startGame = () => {
         setIsLoaded(false)
         setQuestionCounter(0)
         setGameOver(false)
         setScore(0)
-        getQuestions(questionAmount, Categories.TELEVISION)
+        getQuestions(questionAmount, props.category ?? Categories.MATHEMATICS)
         .then(data => {
             console.log(data)
             setQuestionList(data.map(elem => ({
@@ -27,14 +29,13 @@ function Game() {
                 incorrectAnswers: elem.incorrect_answers
             })))
             setIsLoaded(true)
+            setStartTime(new Date())
         })
         .catch(err => console.log(err))
     }
 
     const updateAnswers = () => {
         if (questionList[0] !== undefined) {
-            console.log(questionCounter)
-            console.log(questionList)
             let answers = [...questionList[questionCounter].incorrectAnswers, questionList[questionCounter].correctAnswer]
             for (var i = answers.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1));
@@ -47,7 +48,7 @@ function Game() {
     }
 
     useEffect(() => {
-        refreshQuestions()
+        startGame()
     }, [])
 
     useEffect(() => {
@@ -63,9 +64,18 @@ function Game() {
             updateAnswers()
         } else {
             setGameOver(true)
+            setTotalTime(Math.round((new Date() - startTime) / 1000))
         }
     }
 
+    if(gameOver) {
+        return (
+            <div className="game-container">
+                <h1>Game over!</h1>
+                <h2>Your score: {score} points out of {questionAmount}</h2>
+            </div>
+        )
+    }
     return (
         <div className="game-container">
             <div className="game-upper">
