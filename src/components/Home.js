@@ -78,12 +78,15 @@ export default function Home() {
 
         <ButtonGroup
           value={button}
-          onClick={(e) => setButton(e.target.value)}
+          onClick={(e) => {
+            setButton(e.target.value)
+          }}
           variant="contained"
           color="primary"
           aria-label="contained primary button group"
           fullWidth
           label="Buttons"
+          disabled={name === ""}
         >
           <Button value="standard" type="submit" href={standardLink}>
             STANDARD

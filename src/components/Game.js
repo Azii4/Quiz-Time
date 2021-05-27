@@ -10,7 +10,29 @@ function Game(props) {
     const {search} = useLocation()
     const searchParams = new URLSearchParams(search)
     const name = searchParams.get('name')
-    const category = searchParams.get('cat')
+    let category = searchParams.get('cat')
+    switch(category) {
+        case "movies":
+            category = Categories.FILM
+            break;
+        case "music":
+            category = Categories.MUSIC
+            break;
+        case "videoGames":
+            category = Categories.VIDEO_GAMES
+            break;
+        case "history":
+            category = Categories.HISTORY
+            break;
+        case "geography":
+            category = Categories.GEOGRAPHY
+            break;
+        case "animals":
+            category = Categories.ANIMALS
+            break;
+        default:
+            category = ""
+    }
     const gamemode = searchParams.get('mode')
 
     console.log(name, category, gamemode)
@@ -30,7 +52,7 @@ function Game(props) {
         setQuestionCounter(0)
         setGameOver(false)
         setScore(0)
-        getQuestions(questionAmount, props.category ?? Categories.MATHEMATICS)
+        getQuestions(questionAmount, category)
         .then(data => {
             console.log(data)
             setQuestionList(data.map(elem => ({

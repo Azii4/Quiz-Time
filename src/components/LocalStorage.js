@@ -14,25 +14,18 @@ export function saveStandard(name, category, score) {
   localStorage.setItem("Standard LeaderBoard", jsonStandardLeader);
 }
 
-function saveTimeAttack() {
+export function saveTimeAttack(name, category, score, time) {
   var todayDate = new Date().toISOString().slice(0, 10);
   const TimeAttackLeader = [
+    ...JSON.parse(localStorage.getItem("TimeAttack LeaderBoard")),
     {
-      name: "bob",
-      Category: "Video Game",
+      name: name,
+      Category: category,
       Date: todayDate,
-      time: "1:20",
-      Score: 10,
-    },
-    {
-      name: "stewart",
-      Category: "all",
-      Date: todayDate,
-      time: "1:36",
-      Score: 9,
-    },
+      time: time,
+      Score: score,
+    }
   ];
   let jsonTimeAttackLeader = JSON.stringify(TimeAttackLeader);
   localStorage.setItem("TimeAttack LeaderBoard", jsonTimeAttackLeader);
 }
-saveTimeAttack();
