@@ -4,7 +4,7 @@ import {
   makeStyles,
   Container,
   Link,
-  Paper,
+  Box,
 } from "@material-ui/core";
 import {
   createMuiTheme,
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
   },
-  paper: {
+  box: {
     backgroundColor: "#ffffff90",
     marginTop: 40,
     borderRadius: "1rem",
@@ -46,11 +46,13 @@ export default function Layout({ children }) {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="md">
-        <Paper
-          elevation={3}
+        <Box
+          elevation={20}
           variant="outlined"
-          className={classes.paper}
+          className={classes.box}
           maxWidth="600"
+          boxShadow={5}
+          pt={1}
         >
           <Typography
             variant="h1"
@@ -74,7 +76,7 @@ export default function Layout({ children }) {
               </Container>
             </div>
           </div>
-        </Paper>
+        </Box>
       </Container>
     </ThemeProvider>
   );
