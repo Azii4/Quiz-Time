@@ -1,10 +1,20 @@
 import "../css/game.css"
 import {useState, useEffect} from 'react'
 import {getQuestions, Categories} from '../modules/triviaApi'
+import {useLocation} from 'react-router-dom'
+import {saveStandard} from './LocalStorage'
 
 const questionAmount = 10;
 
 function Game(props) {
+    const {search} = useLocation()
+    const searchParams = new URLSearchParams(search)
+    const name = searchParams.get('name')
+    const category = searchParams.get('cat')
+    const gamemode = searchParams.get('mode')
+
+    console.log(name, category, gamemode)
+
     const [questionList, setQuestionList] = useState([])
     const [questionCounter, setQuestionCounter] = useState(0)
     const [answerList, setAnswerList] = useState([])
@@ -65,6 +75,7 @@ function Game(props) {
         } else {
             setGameOver(true)
             setTotalTime(Math.round((new Date() - startTime) / 1000))
+            saveStandard(name, category, score)
         }
     }
 
