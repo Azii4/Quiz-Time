@@ -1,5 +1,12 @@
 import React from "react";
-import { Grid, makeStyles, Container, Paper } from "@material-ui/core";
+import {
+  Typography,
+  makeStyles,
+  Container,
+  Paper,
+  AppBar,
+  Toolbar,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   paper: {
@@ -15,13 +22,18 @@ export default function Layout({ children }) {
 
   return (
     <Container>
-      <Grid container align="center">
-        <Grid item xs={12} s={6} m={6}>
-          <Paper elevation={3} variant="outlined" className={classes.paper}>
-            <div>{children}</div>
-          </Paper>
-        </Grid>
-      </Grid>
+      <Paper elevation={3} variant="outlined" className={classes.paper}>
+        <div>{children}</div>
+        <AppBar position="static" color="primary" align="center">
+          <Container maxWidth="md">
+            <Toolbar>
+              <Typography variant="body1" color="inherit">
+                About
+              </Typography>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Paper>
     </Container>
   );
 }

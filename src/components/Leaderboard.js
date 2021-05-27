@@ -1,7 +1,6 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
 import NavTabs from "./NavTabs";
+import { Typography, Container } from "@material-ui/core";
 
 export default function Leaderboard() {
   return (
