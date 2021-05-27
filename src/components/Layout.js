@@ -3,8 +3,6 @@ import {
   Typography,
   makeStyles,
   Container,
-  AppBar,
-  Toolbar,
   Link,
   Paper,
 } from "@material-ui/core";
@@ -13,7 +11,6 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import { borders } from "@material-ui/system";
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
@@ -22,10 +19,12 @@ const useStyles = makeStyles({
   title: {
     marginTop: 40,
   },
-  AppBar: {
+  div: {
     backgroundColor: "#83898E",
-    height: 60,
+    height: 40,
     borderRadius: "0 0 1rem 1rem",
+    display: "flex",
+    alignItems: "center",
   },
   paper: {
     backgroundColor: "#ffffff90",
@@ -38,7 +37,6 @@ const useStyles = makeStyles({
   about: {
     flexGrow: 1,
     textAlign: "center",
-    textDecoration: "none",
   },
 });
 
@@ -66,25 +64,15 @@ export default function Layout({ children }) {
           </Typography>
           <div>{children}</div>
           <div>
-            <AppBar
-              position="relative"
-              color="primary"
-              className={classes.AppBar}
-            >
+            <div className={classes.div}>
               <Container maxWidth="md" borderRadius={16}>
-                <Toolbar>
-                  <Typography variant="h6" className={classes.about}>
-                    <Link
-                      underline="none"
-                      href="/about"
-                      className={classes.link}
-                    >
-                      About Quiz Time
-                    </Link>
-                  </Typography>
-                </Toolbar>
+                <Typography variant="body1" className={classes.about}>
+                  <Link underline="none" href="/about" className={classes.link}>
+                    About Quiz Time
+                  </Link>
+                </Typography>
               </Container>
-            </AppBar>
+            </div>
           </div>
         </Paper>
       </Container>
