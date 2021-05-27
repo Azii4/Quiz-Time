@@ -3,32 +3,34 @@ import {
   Typography,
   makeStyles,
   Container,
-  Paper,
   AppBar,
   Toolbar,
   Link,
+  Paper,
 } from "@material-ui/core";
 import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import { borders } from "@material-ui/system";
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
 const useStyles = makeStyles({
   title: {
-    marginTop: 20,
+    marginTop: 40,
   },
   AppBar: {
     backgroundColor: "#83898E",
     height: 60,
+    borderRadius: "0 0 1rem 1rem",
   },
   paper: {
-    backgroundColor: "#ffffff99",
+    backgroundColor: "#ffffff90",
     marginTop: 40,
-    maxWidth: 800,
+    borderRadius: "1rem",
   },
   link: {
     color: "#4C5055",
@@ -45,8 +47,13 @@ export default function Layout({ children }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <Paper elevation={3} variant="outlined" className={classes.paper}>
+      <Container maxWidth="md">
+        <Paper
+          elevation={3}
+          variant="outlined"
+          className={classes.paper}
+          maxWidth="600"
+        >
           <Typography
             variant="h1"
             color="textPrimary"
@@ -64,7 +71,7 @@ export default function Layout({ children }) {
               color="primary"
               className={classes.AppBar}
             >
-              <Container maxWidth="md">
+              <Container maxWidth="md" borderRadius={16}>
                 <Toolbar>
                   <Typography variant="h6" className={classes.about}>
                     <Link
