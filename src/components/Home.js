@@ -21,10 +21,6 @@ const useStyles = makeStyles({
     marginTop: 20,
     marginBottom: 20,
   },
-  title: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
   formControl: {
     marginTop: 20,
     marginBottom: 20,
@@ -53,15 +49,6 @@ export default function Home() {
 
   return (
     <Container size="sm">
-      <Typography
-        variant="h1"
-        color="textPrimary"
-        align="center"
-        className={classes.title}
-      >
-        Quiz Time
-      </Typography>
-
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField
           className={classes.field}
