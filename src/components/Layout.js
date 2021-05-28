@@ -1,4 +1,5 @@
 import React from "react";
+import Spelkort from "./Spelkort";
 import {
   Typography,
   makeStyles,
@@ -12,6 +13,7 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import { findByLabelText } from "@testing-library/dom";
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
@@ -81,6 +83,8 @@ export default function Layout({ children }) {
           </Typography>
 
           <div>{children}</div>
+
+          <Spelkort />
 
           <BottomNavigation className={classes.footer}>
             <Link className={classes.link} underline="none" href="/about">

@@ -33,6 +33,7 @@ export default function Leaderboard() {
             Quiz Time on GitHub
           </Link>
         </Typography>
+        <br></br>
       </div>
       <Typography variant="h4" align="center">
         The Game
