@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Spelkort() {
-  const [spacing, setSpacing] = React.useState(2);
+  const [spacing] = React.useState(2);
   const classes = useStyles();
 
   return (
