@@ -1,5 +1,4 @@
 import React from "react";
-import Spelkort from "./Spelkort";
 import {
   Typography,
   makeStyles,
@@ -82,8 +81,6 @@ export default function Layout({ children }) {
           </Typography>
 
           <div>{children}</div>
-
-          <Spelkort />
 
           <BottomNavigation className={classes.footer}>
             <Link className={classes.link} underline="none" href="/about">

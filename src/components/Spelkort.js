@@ -35,7 +35,6 @@ export default function Spelkort() {
                 <Typography variant="h6" color="textPrimary">
                   Kort
                 </Typography>
-                <p>Kalle</p>
               </Paper>
             </Grid>
           ))}

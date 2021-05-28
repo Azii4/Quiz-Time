@@ -1,6 +1,7 @@
 import "../css/game.css";
 import { useState, useEffect } from "react";
 import { getQuestions, Categories } from "../modules/triviaApi";
+import Spelkort from "./Spelkort";
 
 const questionAmount = 10;
 
@@ -103,6 +104,7 @@ function Game(props) {
           )}
         </div>
       </div>
+      <Spelkort />
     </div>
   );
 }
