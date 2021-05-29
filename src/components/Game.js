@@ -1,41 +1,14 @@
 import "../css/game.css"
 import {useState, useEffect} from 'react'
-import {getQuestions, Categories} from '../modules/triviaApi'
+import {getQuestions, getCategory} from '../modules/triviaApi'
 import {useLocation} from 'react-router-dom'
-import {saveStandard} from './LocalStorage'
+import {saveStandard, saveTimeAttack} from './LocalStorage'
 
 const questionAmount = 10;
 
 function Game(props) {
     const {search} = useLocation()
     const searchParams = new URLSearchParams(search)
-    const name = searchParams.get('name')
-    let category = searchParams.get('cat')
-    switch(category) {
-        case "movies":
-            category = Categories.FILM
-            break;
-        case "music":
-            category = Categories.MUSIC
-            break;
-        case "videoGames":
-            category = Categories.VIDEO_GAMES
-            break;
-        case "history":
-            category = Categories.HISTORY
-            break;
-        case "geography":
-            category = Categories.GEOGRAPHY
-            break;
-        case "animals":
-            category = Categories.ANIMALS
-            break;
-        default:
-            category = ""
-    }
-    const gamemode = searchParams.get('mode')
-
-    console.log(name, category, gamemode)
 
     const [questionList, setQuestionList] = useState([])
     const [questionCounter, setQuestionCounter] = useState(0)
@@ -45,14 +18,25 @@ function Game(props) {
     const [gameOver, setGameOver] = useState(false)
     const [startTime, setStartTime] = useState(0)
     const [totalTime, setTotalTime] = useState(0)
-    const [gameMode, setGameMode] = useState(props.gamemode ?? 0) // Tanken är att ha 0 för standard och 1 för timeattack
+    const [gameMode, setGameMode] = useState(searchParams.get('mode')) // Tanken är att ha 0 för standard och 1 för timeattack
+    const [name, setName] = useState(searchParams.get('name'))
+    const [category, setCategory] = useState(searchParams.get('cat')) 
+    const [timer, setTimer] = useState(null)
 
-    const startGame = () => {
+    const startTimer = () => {
+        console.log("Timer started")
+        setTimer(setInterval(() => {
+            console.log("Timer Action")
+            nextQuestion()
+        }, 10000))
+    }
+
+    const startGame = (mode) => {
         setIsLoaded(false)
         setQuestionCounter(0)
         setGameOver(false)
         setScore(0)
-        getQuestions(questionAmount, category)
+        getQuestions(questionAmount, getCategory(category))
         .then(data => {
             console.log(data)
             setQuestionList(data.map(elem => ({
@@ -62,6 +46,9 @@ function Game(props) {
             })))
             setIsLoaded(true)
             setStartTime(new Date())
+            if(gameMode === "1") {
+                startTimer()
+            }
         })
         .catch(err => console.log(err))
     }
@@ -80,7 +67,7 @@ function Game(props) {
     }
 
     useEffect(() => {
-        startGame()
+        startGame(gameMode)
     }, [])
 
     useEffect(() => {
@@ -88,17 +75,39 @@ function Game(props) {
     }, [questionList, questionCounter])
 
     const handleButton = (e) => {
+        if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
+            setScore(score + 1)
+        }
+        clearInterval(timer)
+        startTimer()
+        nextQuestion()
+    }
+
+    const nextQuestion = () => {
+        console.log("Next question", questionCounter, questionAmount)
         if(questionCounter < questionAmount - 1) {
-            if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
-                setScore(score + 1)
-            }
-            setQuestionCounter(questionCounter + 1)
+            console.log("Updating question")
+            setQuestionCounter(prevCounter => prevCounter + 1)
             updateAnswers()
         } else {
-            setGameOver(true)
-            setTotalTime(Math.round((new Date() - startTime) / 1000))
-            saveStandard(name, category, score)
+            stopGame()
         }
+    }
+
+    const stopGame = () => {
+        setGameOver(true)
+        setTotalTime(Math.round((new Date() - startTime) / 1000))
+        switch (gameMode) {
+            case "0":
+                saveStandard(name, category, score)
+                break;
+            case "1":
+                saveTimeAttack(name, category, score, totalTime)
+                break;
+            default:
+                break;
+        }
+        clearInterval(timer)
     }
 
     if(gameOver) {
