@@ -12,7 +12,6 @@ import {
 
 const useStyles = makeStyles({
   field: {
-    marginTop: 20,
     marginBottom: 20,
     display: "block",
   },
@@ -21,7 +20,6 @@ const useStyles = makeStyles({
     marginBottom: 20,
   },
   formControl: {
-    marginTop: 20,
     marginBottom: 20,
   },
 });

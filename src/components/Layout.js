@@ -17,6 +17,9 @@ let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
 const useStyles = makeStyles({
+  content: {
+    minHeight: 400,
+  },
   container: {
     [theme.breakpoints.down("xs")]: {
       padding: 0,
@@ -27,6 +30,7 @@ const useStyles = makeStyles({
     backgroundColor: "#ffffff80",
     marginTop: 40,
     borderRadius: "1rem",
+    minHeight: 400,
     [theme.breakpoints.down("xs")]: {
       margin: 0,
       borderRadius: 0,
@@ -34,7 +38,8 @@ const useStyles = makeStyles({
     },
   },
   title: {
-    marginTop: 40,
+    marginTop: 20,
+    marginBottom: 20,
   },
   footer: {
     backgroundColor: "#83898E",
@@ -44,8 +49,8 @@ const useStyles = makeStyles({
     alignItems: "center",
     [theme.breakpoints.down("xs")]: {
       borderRadius: 0,
-      position: "fixed",
       bottom: 0,
+      position: "fixed",
       width: "100%",
     },
   },
@@ -80,7 +85,7 @@ export default function Layout({ children }) {
             </Link>
           </Typography>
 
-          <div>{children}</div>
+          <div className={classes.content}>{children}</div>
 
           <BottomNavigation className={classes.footer}>
             <Link className={classes.link} underline="none" href="/about">
