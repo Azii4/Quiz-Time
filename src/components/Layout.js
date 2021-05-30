@@ -59,7 +59,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <Container maxWidth="sm" className={classes.container}>
+      <Container maxWidth="sm" className={classes.container} align="center">
         <Box
           className={classes.box}
           elevation={20}

@@ -14,8 +14,8 @@ export default function Leaderboard() {
     <Container size="sm">
       <div className={classes.text}>
         <Typography variant="p">
-          This project is created by two Information Architecture students and
-          one System Development student for the course{" "}
+          Quiz Time is created by two Information Architecture students and one
+          System Development student as a project in the course{" "}
           <Link href="https://mau-webb.github.io/resurser/da355a-vt21/">
             {" "}
             DA355A - Multi-platform applications with web engineers / DA344A -
