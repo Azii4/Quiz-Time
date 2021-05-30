@@ -116,7 +116,6 @@ function Game(props) {
         }
         clearInterval(timer)
     }
-  };
 
   if (gameOver) {
     return (
