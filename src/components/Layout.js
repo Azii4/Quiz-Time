@@ -7,14 +7,9 @@ import {
   Box,
   BottomNavigation,
 } from "@material-ui/core";
-import {
-  createMuiTheme,
-  responsiveFontSizes,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 
 let theme = createMuiTheme();
-theme = responsiveFontSizes(theme);
 
 const useStyles = makeStyles({
   container: {
@@ -33,8 +28,12 @@ const useStyles = makeStyles({
       minHeight: 800,
     },
   },
+  content: {
+    minHeight: 400,
+  },
   title: {
-    marginTop: 40,
+    marginTop: 20,
+    marginBottom: 20,
   },
   footer: {
     backgroundColor: "#83898E",
@@ -44,8 +43,8 @@ const useStyles = makeStyles({
     alignItems: "center",
     [theme.breakpoints.down("xs")]: {
       borderRadius: 0,
-      position: "fixed",
       bottom: 0,
+      position: "fixed",
       width: "100%",
     },
   },
@@ -59,8 +58,8 @@ export default function Layout({ children }) {
   const classes = useStyles();
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container maxWidth="md" className={classes.container}>
+    <>
+      <Container maxWidth="sm" className={classes.container} align="center">
         <Box
           className={classes.box}
           elevation={20}
@@ -80,7 +79,7 @@ export default function Layout({ children }) {
             </Link>
           </Typography>
 
-          <div>{children}</div>
+          <div className={classes.content}>{children}</div>
 
           <BottomNavigation className={classes.footer}>
             <Link className={classes.link} underline="none" href="/about">
@@ -89,6 +88,6 @@ export default function Layout({ children }) {
           </BottomNavigation>
         </Box>
       </Container>
-    </ThemeProvider>
+    </>
   );
 }

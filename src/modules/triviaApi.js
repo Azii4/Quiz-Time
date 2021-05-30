@@ -27,6 +27,25 @@ export const Categories = {
   CARTOONS_AND_ANIMATIONS: 32
 }
 
+export function getCategory(categoryId) {
+  switch (categoryId) {
+    case "movies":
+      return Categories.FILM
+    case "music":
+      return Categories.MUSIC
+    case "videoGames":
+      return Categories.VIDEO_GAMES
+    case "history":
+      return Categories.HISTORY
+    case "geography":
+      return Categories.GEOGRAPHY
+    case "animals":
+      return Categories.ANIMALS
+    default:
+      return ""
+  }
+}
+
 export function getQuestions(amount, category, difficulty = 'medium', type = 'multiple') {
   return new Promise((resolve, reject) => {
     axios.get('https://opentdb.com/api.php', {

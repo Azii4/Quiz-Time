@@ -1,10 +1,16 @@
 import "../css/game.css"
-import {useState, useEffect} from 'react'
-import {getQuestions, Categories} from '../modules/triviaApi'
+import {useState, useEffect, useRef} from 'react'
+import {getQuestions, getCategory} from '../modules/triviaApi'
+import {useLocation} from 'react-router-dom'
+import {saveStandard, saveTimeAttack} from './LocalStorage'
+import Spelkort from "./Spelkort";
 
 const questionAmount = 10;
 
 function Game(props) {
+    const {search} = useLocation()
+    const searchParams = new URLSearchParams(search)
+
     const [questionList, setQuestionList] = useState([])
     const [questionCounter, setQuestionCounter] = useState(0)
     const [answerList, setAnswerList] = useState([])
@@ -12,17 +18,30 @@ function Game(props) {
     const [score, setScore] = useState(0)
     const [gameOver, setGameOver] = useState(false)
     const [startTime, setStartTime] = useState(0)
-    const [totalTime, setTotalTime] = useState(0)
-    const [gameMode, setGameMode] = useState(props.gamemode ?? 0) // Tanken är att ha 0 för standard och 1 för timeattack
+    const [gameMode, setGameMode] = useState(searchParams.get('mode')) // Tanken är att ha 0 för standard och 1 för timeattack
+    const [name, setName] = useState(searchParams.get('name'))
+    const [category, setCategory] = useState(searchParams.get('cat')) 
+    const [timer, setTimer] = useState(null)
 
-    const startGame = () => {
+    const counterValue = useRef(questionCounter)
+
+    const startTimer = () => {
+        setTimer(setTimeout(() => {
+            nextQuestion()
+        }, 10000))
+    }
+
+    useEffect(() => {
+        counterValue.current = questionCounter // Konstig lösning för setTimeout-state problemet
+    })
+
+    const startGame = (mode) => {
         setIsLoaded(false)
         setQuestionCounter(0)
         setGameOver(false)
         setScore(0)
-        getQuestions(questionAmount, props.category ?? Categories.MATHEMATICS)
+        getQuestions(questionAmount, getCategory(category))
         .then(data => {
-            console.log(data)
             setQuestionList(data.map(elem => ({
                 question: elem.question,
                 correctAnswer: elem.correct_answer,
@@ -30,79 +49,99 @@ function Game(props) {
             })))
             setIsLoaded(true)
             setStartTime(new Date())
+            if(gameMode === "1") {
+                startTimer()
+            }
         })
         .catch(err => console.log(err))
     }
 
-    const updateAnswers = () => {
-        if (questionList[0] !== undefined) {
-            let answers = [...questionList[questionCounter].incorrectAnswers, questionList[questionCounter].correctAnswer]
-            for (var i = answers.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var temp = answers[i];
-                answers[i] = answers[j];
-                answers[j] = temp;
-            }
-            setAnswerList(answers)
-        }
+  const updateAnswers = () => {
+    if (questionList[0] !== undefined) {
+      let answers = [
+        ...questionList[questionCounter].incorrectAnswers,
+        questionList[questionCounter].correctAnswer,
+      ];
+      for (var i = answers.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = answers[i];
+        answers[i] = answers[j];
+        answers[j] = temp;
+      }
+      setAnswerList(answers);
     }
+  };
 
-    useEffect(() => {
-        startGame()
-    }, [])
+  useEffect(() => {
+    startGame(gameMode)
+  }, [])
 
-    useEffect(() => {
-        updateAnswers()
-    }, [questionList, questionCounter])
+  useEffect(() => {
+    updateAnswers();
+  }, [questionList, questionCounter]);
 
-    const handleButton = (e) => {
-        if(questionCounter < questionAmount - 1) {
-            if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
-                setScore(score + 1)
-            }
-            setQuestionCounter(questionCounter + 1)
+
+    const handleButton = (answer) => {
+        if(answer === questionList[questionCounter].correctAnswer) {
+            setScore(score + 1)
+        }
+        nextQuestion()
+    }
+    const nextQuestion = () => {
+     clearTimeout(timer)
+        if(counterValue.current < questionAmount - 1) {
+            console.log("Updating question")
+            setQuestionCounter(counterValue.current + 1)
             updateAnswers()
+            if(gameMode === "1") {
+                startTimer()
+            }
         } else {
-            setGameOver(true)
-            setTotalTime(Math.round((new Date() - startTime) / 1000))
+            stopGame()
         }
     }
 
-    if(gameOver) {
-        return (
-            <div className="game-container">
-                <h1>Game over!</h1>
-                <h2>Your score: {score} points out of {questionAmount}</h2>
-            </div>
-        )
+    const stopGame = () => {
+        setGameOver(true)
+        const totalTime = new Date(Date.now() - startTime).toISOString().substr(14, 5)
+        switch (gameMode) {
+            case "0":
+                saveStandard(name, category, score)
+                break;
+            case "1":
+                saveTimeAttack(name, category, score, totalTime)
+                break;
+            default:
+                break;
+        }
+        clearInterval(timer)
     }
+
+  if (gameOver) {
     return (
-        <div className="game-container">
-            <div className="game-upper">
-                <div className="question-container">
-                    <p>{questionList[questionCounter]?.question ?? "Loading..."}</p>
-                </div>
-            </div>
-            <div className="game-lower">
-                <div className="answer-container">
-                    {
-                        isLoaded === false ? null : (
-                            <>
-                                <div className="answer-upper">
-                                    <button onClick={handleButton}>{answerList[0]}</button>
-                                    <button onClick={handleButton}>{answerList[1]}</button>
-                                </div>
-                                <div className="answer-lower">
-                                    <button onClick={handleButton}>{answerList[2]}</button>
-                                    <button onClick={handleButton}>{answerList[3]}</button>
-                                </div>
-                            </>
-                        )
-                    }
-                </div>
-            </div>
+      <div className="game-container">
+        <h1>Game over!</h1>
+        <h2>
+          Your score: {score} points out of {questionAmount}
+        </h2>
+      </div>
+    );
+  }
+  return (
+    <div className="game-container">
+      <div className="game-upper">
+        <div className="question-container">
+          <p>{questionList[questionCounter]?.question ?? "Loading..."}</p>
         </div>
-    )
+      </div>
+      <div className="game-lower">
+        <div className="answer-container">
+            <Spelkort answers={answerList} onClick={handleButton}/>
+        </div>
+      </div>
+      
+    </div>
+  );
 }
 
-export default Game
+export default Game;
