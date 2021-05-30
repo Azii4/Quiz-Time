@@ -1,5 +1,5 @@
 import "../css/game.css"
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import {getQuestions, getCategory} from '../modules/triviaApi'
 import {useLocation} from 'react-router-dom'
 import {saveStandard, saveTimeAttack} from './LocalStorage'
@@ -17,19 +17,22 @@ function Game(props) {
     const [score, setScore] = useState(0)
     const [gameOver, setGameOver] = useState(false)
     const [startTime, setStartTime] = useState(0)
-    const [totalTime, setTotalTime] = useState(0)
     const [gameMode, setGameMode] = useState(searchParams.get('mode')) // Tanken är att ha 0 för standard och 1 för timeattack
     const [name, setName] = useState(searchParams.get('name'))
     const [category, setCategory] = useState(searchParams.get('cat')) 
     const [timer, setTimer] = useState(null)
 
+    const counterValue = useRef(questionCounter)
+
     const startTimer = () => {
-        console.log("Timer started")
-        setTimer(setInterval(() => {
-            console.log("Timer Action")
+        setTimer(setTimeout(() => {
             nextQuestion()
         }, 10000))
     }
+
+    useEffect(() => {
+        counterValue.current = questionCounter // Konstig lösning för setTimeout-state problemet
+    })
 
     const startGame = (mode) => {
         setIsLoaded(false)
@@ -38,7 +41,6 @@ function Game(props) {
         setScore(0)
         getQuestions(questionAmount, getCategory(category))
         .then(data => {
-            console.log(data)
             setQuestionList(data.map(elem => ({
                 question: elem.question,
                 correctAnswer: elem.correct_answer,
@@ -78,17 +80,18 @@ function Game(props) {
         if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
             setScore(score + 1)
         }
-        clearInterval(timer)
-        startTimer()
         nextQuestion()
     }
 
     const nextQuestion = () => {
-        console.log("Next question", questionCounter, questionAmount)
-        if(questionCounter < questionAmount - 1) {
+        clearTimeout(timer)
+        if(counterValue.current < questionAmount - 1) {
             console.log("Updating question")
-            setQuestionCounter(prevCounter => prevCounter + 1)
+            setQuestionCounter(counterValue.current + 1)
             updateAnswers()
+            if(gameMode === "1") {
+                startTimer()
+            }
         } else {
             stopGame()
         }
@@ -96,7 +99,7 @@ function Game(props) {
 
     const stopGame = () => {
         setGameOver(true)
-        setTotalTime(Math.round((new Date() - startTime) / 1000))
+        const totalTime = new Date(Date.now() - startTime).toISOString().substr(14, 5)
         switch (gameMode) {
             case "0":
                 saveStandard(name, category, score)
