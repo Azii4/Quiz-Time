@@ -82,7 +82,6 @@ function Game(props) {
 
 
     const handleButton = (answer) => {
-        console.log(answer)
         if(answer === questionList[questionCounter].correctAnswer) {
             setScore(score + 1)
         }
