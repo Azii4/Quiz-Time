@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import { ButtonGroup, makeStyles } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
+import {
+  MenuItem,
+  Select,
+  FormControl,
+  TextField,
+  Container,
+  ButtonGroup,
+  Button,
+  makeStyles,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   field: {
-    marginTop: 20,
     marginBottom: 20,
     display: "block",
   },
   btn: {
-    marginTop: 20,
+    marginTop: 80,
+    marginBottom: 20,
+  },
+  formControl: {
     marginBottom: 20,
   },
 });
@@ -37,6 +41,7 @@ export default function Home() {
     if (name === "") {
       setNameError(true);
     }
+
     if (name) {
       console.log(name, category);
     }
@@ -44,10 +49,6 @@ export default function Home() {
 
   return (
     <Container size="sm">
-      <Typography variant="h1" color="textPrimary" align="center">
-        Quiz Time
-      </Typography>
-
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField
           className={classes.field}

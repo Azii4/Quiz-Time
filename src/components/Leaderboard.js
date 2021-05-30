@@ -1,12 +1,24 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
 import NavTabs from "./NavTabs";
+import { Typography, Container, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  leaderboard: {
+    marginBottom: 20,
+  },
+});
 
 export default function Leaderboard() {
+  const classes = useStyles();
+
   return (
     <Container size="sm">
-      <Typography variant="h1" color="textPrimary" align="center">
+      <Typography
+        variant="h4"
+        color="textPrimary"
+        align="center"
+        className={classes.leaderboard}
+      >
         Leaderboard
       </Typography>
       <NavTabs />

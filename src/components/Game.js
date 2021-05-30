@@ -3,6 +3,7 @@ import {useState, useEffect, useRef} from 'react'
 import {getQuestions, getCategory} from '../modules/triviaApi'
 import {useLocation} from 'react-router-dom'
 import {saveStandard, saveTimeAttack} from './LocalStorage'
+import Spelkort from "./Spelkort";
 
 const questionAmount = 10;
 
@@ -55,36 +56,39 @@ function Game(props) {
         .catch(err => console.log(err))
     }
 
-    const updateAnswers = () => {
-        if (questionList[0] !== undefined) {
-            let answers = [...questionList[questionCounter].incorrectAnswers, questionList[questionCounter].correctAnswer]
-            for (var i = answers.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var temp = answers[i];
-                answers[i] = answers[j];
-                answers[j] = temp;
-            }
-            setAnswerList(answers)
-        }
+  const updateAnswers = () => {
+    if (questionList[0] !== undefined) {
+      let answers = [
+        ...questionList[questionCounter].incorrectAnswers,
+        questionList[questionCounter].correctAnswer,
+      ];
+      for (var i = answers.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = answers[i];
+        answers[i] = answers[j];
+        answers[j] = temp;
+      }
+      setAnswerList(answers);
     }
+  };
 
-    useEffect(() => {
-        startGame(gameMode)
-    }, [])
+  useEffect(() => {
+    startGame(gameMode)
+  }, [])
 
-    useEffect(() => {
-        updateAnswers()
-    }, [questionList, questionCounter])
+  useEffect(() => {
+    updateAnswers();
+  }, [questionList, questionCounter]);
 
-    const handleButton = (e) => {
-        if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
-            setScore(score + 1)
+
+  const handleButton = (e) => {
+    if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
+        setScore(score + 1)
         }
         nextQuestion()
     }
-
-    const nextQuestion = () => {
-        clearTimeout(timer)
+  const nextQuestion = () => {
+     clearTimeout(timer)
         if(counterValue.current < questionAmount - 1) {
             console.log("Updating question")
             setQuestionCounter(counterValue.current + 1)
@@ -112,42 +116,41 @@ function Game(props) {
         }
         clearInterval(timer)
     }
+  };
 
-    if(gameOver) {
-        return (
-            <div className="game-container">
-                <h1>Game over!</h1>
-                <h2>Your score: {score} points out of {questionAmount}</h2>
-            </div>
-        )
-    }
+  if (gameOver) {
     return (
-        <div className="game-container">
-            <div className="game-upper">
-                <div className="question-container">
-                    <p>{questionList[questionCounter]?.question ?? "Loading..."}</p>
-                </div>
-            </div>
-            <div className="game-lower">
-                <div className="answer-container">
-                    {
-                        isLoaded === false ? null : (
-                            <>
-                                <div className="answer-upper">
-                                    <button onClick={handleButton}>{answerList[0]}</button>
-                                    <button onClick={handleButton}>{answerList[1]}</button>
-                                </div>
-                                <div className="answer-lower">
-                                    <button onClick={handleButton}>{answerList[2]}</button>
-                                    <button onClick={handleButton}>{answerList[3]}</button>
-                                </div>
-                            </>
-                        )
-                    }
-                </div>
-            </div>
+      <div className="game-container">
+        <h1>Game over!</h1>
+        <h2>
+          Your score: {score} points out of {questionAmount}
+        </h2>
+      </div>
+    );
+  }
+  return (
+    <div className="game-container">
+      <div className="game-upper">
+        <div className="question-container">
+          <p>{questionList[questionCounter]?.question ?? "Loading..."}</p>
         </div>
-    )
+      </div>
+      <div className="game-lower">
+        <div className="answer-container">
+          {isLoaded === false ? null : (
+            <>
+              <div className="answer-upper">
+                {answerList.map((answer) => (
+                  <button onClick={handleButton}>{answer}</button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+      <Spelkort />
+    </div>
+  );
 }
 
-export default Game
+export default Game;
