@@ -81,13 +81,14 @@ function Game(props) {
   }, [questionList, questionCounter]);
 
 
-  const handleButton = (e) => {
-    if(e.target.innerHTML === questionList[questionCounter].correctAnswer) {
-        setScore(score + 1)
+    const handleButton = (answer) => {
+        console.log(answer)
+        if(answer === questionList[questionCounter].correctAnswer) {
+            setScore(score + 1)
         }
         nextQuestion()
     }
-  const nextQuestion = () => {
+    const nextQuestion = () => {
      clearTimeout(timer)
         if(counterValue.current < questionAmount - 1) {
             console.log("Updating question")
@@ -136,18 +137,10 @@ function Game(props) {
       </div>
       <div className="game-lower">
         <div className="answer-container">
-          {isLoaded === false ? null : (
-            <>
-              <div className="answer-upper">
-                {answerList.map((answer) => (
-                  <button onClick={handleButton}>{answer}</button>
-                ))}
-              </div>
-            </>
-          )}
+            <Spelkort answers={answerList} onClick={handleButton}/>
         </div>
       </div>
-      <Spelkort />
+      
     </div>
   );
 }

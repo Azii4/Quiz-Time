@@ -16,26 +16,28 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     minWidth: 100,
     minHeight: 50,
+    cursor: "pointer"
   },
   control: {
     padding: theme.spacing(2),
   },
 }));
 
-export default function Spelkort() {
+export default function Spelkort(props) {
   const [spacing] = React.useState(2);
   const classes = useStyles();
+  console.log(props)
 
   return (
     <>
       <Grid container justify="center" className={classes.root} spacing={2}>
         <Grid item>
           <Grid container justify="center" spacing={spacing}>
-            {[0, 1, 2, 3].map((value) => (
+            {props.answers.map((value) => (
               <Grid key={value} item xs={6} sm={6} md={6}>
-                <Paper className={classes.paper} elevation={3}>
+                <Paper onClick={() => {props.onClick(value)}} className={classes.paper} elevation={3}>
                   <Typography variant="BUTTON TEXT" color="textPrimary">
-                    SVAR
+                    {value}
                   </Typography>
                 </Paper>
               </Grid>
