@@ -1,44 +1,52 @@
-function saveStandard() {
+export function saveStandard(name, category, score) {
   var todayDate = new Date().toISOString().slice(0, 10);
   const standardLeader = [
+    ...JSON.parse(localStorage.getItem("Standard LeaderBoard")) ?? [],
     {
-      name: "Peter Dinkelberg",
-      Category: "Video Game",
+      name: name,
+      Category: getCategoryString(category),
       Date: todayDate,
-      Score: 10,
-    },
-    {
-      name: "Dinkelberg",
-      Category: "all",
-      Date: todayDate,
-      Score: 9,
-    },
+      Score: score,
+    }
   ];
 
   let jsonStandardLeader = JSON.stringify(standardLeader);
   localStorage.setItem("Standard LeaderBoard", jsonStandardLeader);
 }
 
-function saveTimeAttack() {
+export function saveTimeAttack(name, category, score, time) {
   var todayDate = new Date().toISOString().slice(0, 10);
   const TimeAttackLeader = [
+    ...JSON.parse(localStorage.getItem("TimeAttack LeaderBoard")) ?? [],
     {
-      name: "bob",
-      Category: "Video Game",
+      name: name,
+      Category: getCategoryString(category),
       Date: todayDate,
-      time: "1:20",
-      Score: 10,
-    },
-    {
-      name: "stewart",
-      Category: "all",
-      Date: todayDate,
-      time: "1:36",
-      Score: 9,
-    },
+      time: time,
+      Score: score,
+    }
   ];
   let jsonTimeAttackLeader = JSON.stringify(TimeAttackLeader);
   localStorage.setItem("TimeAttack LeaderBoard", jsonTimeAttackLeader);
 }
-saveStandard();
-saveTimeAttack();
+
+const getCategoryString = (category) => {
+  switch (category) {
+    case "all":
+      return "All Categories"
+    case "movies":
+      return "Movies"
+    case "music":
+      return "Music"
+    case "videoGames":
+      return "Video Games"
+    case "history":
+      return "History"
+    case "geography":
+      return "Geography"
+    case "animals":
+      return "Animals"
+    default:
+      return "Missing Category"
+  }
+}

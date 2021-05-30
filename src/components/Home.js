@@ -31,6 +31,9 @@ export default function Home() {
   const [category, setCategory] = useState("all");
   const [button, setButton] = useState("");
 
+  const standardLink = `/game?name=${name}&cat=${category}&mode=0`
+  const timeattackLink = `/game?name=${name}&cat=${category}&mode=1`
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setNameError(false);
@@ -76,17 +79,20 @@ export default function Home() {
 
         <ButtonGroup
           value={button}
-          onClick={(e) => setButton(e.target.value)}
+          onClick={(e) => {
+            setButton(e.target.value)
+          }}
           variant="contained"
           color="primary"
           aria-label="contained primary button group"
           fullWidth
           label="Buttons"
+          disabled={name === ""}
         >
-          <Button value="standard" type="submit">
+          <Button value="standard" type="submit" href={standardLink}>
             STANDARD
           </Button>
-          <Button value="timeAttack" type="submit">
+          <Button value="timeAttack" type="submit" href={timeattackLink}>
             TIME ATTACK
           </Button>
         </ButtonGroup>
