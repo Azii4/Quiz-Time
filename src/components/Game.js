@@ -29,6 +29,7 @@ function Game() {
     const [category, setCategory] = useState(searchParams.get('cat')) 
     const [timer, setTimer] = useState(null)
     const [answered, setAnswered] = useState(false)
+    const [incorrectAnswer, setIncorectAnswer] = useState("")
 
     const counterValue = useRef(questionCounter)
 
@@ -93,6 +94,8 @@ function Game() {
       if(answer !== null) {
         if(answer === questionList[questionCounter].correctAnswer) {
           setScore(score + 1)
+        } else {
+          setIncorectAnswer(answer)
         }
       }
       setTimeout(nextQuestion, 1500)
@@ -100,6 +103,7 @@ function Game() {
 
     const nextQuestion = () => {
       setAnswered(false)
+      setIncorectAnswer("")
       clearTimeout(timer)
         if(counterValue.current < questionAmount - 1) {
             console.log("Updating question")
@@ -167,6 +171,7 @@ function Game() {
               answers={answerList} 
               onClick={handleButton} 
               correctAnswer={questionList[questionCounter]?.correctAnswer} 
+              incorrectAnswer={incorrectAnswer}
               answered={answered}
             />
         </div>
