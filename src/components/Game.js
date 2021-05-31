@@ -1,15 +1,19 @@
 import "../css/game.css"
 import {useState, useEffect, useRef} from 'react'
 import {getQuestions, getCategory} from '../modules/triviaApi'
-import {useLocation} from 'react-router-dom'
+import {useLocation, Link} from 'react-router-dom'
 import {saveStandard, saveTimeAttack} from './LocalStorage'
 import Spelkort from "./Spelkort";
 import TimerBar from "./TimerBar";
+import {
+  ButtonGroup,
+  Button
+} from "@material-ui/core"
 
 const questionAmount = 10;
 const timerTime = 10;
 
-function Game(props) {
+function Game() {
     const {search} = useLocation()
     const searchParams = new URLSearchParams(search)
 
@@ -132,6 +136,20 @@ function Game(props) {
         <h2>
           Your score: {score} points out of {questionAmount}
         </h2>
+        <ButtonGroup
+          variant="contained"
+          color="primary"
+          aria-label="contained primary button group"
+          fullWidth
+          label="Buttons"
+        >
+          <Button component={Link} to={'/'}>
+            Quit
+          </Button>
+          <Button onClick={() => {startGame(gameMode)}}>
+            Restart
+          </Button>
+        </ButtonGroup>
       </div>
     );
   }
