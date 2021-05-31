@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
 import Game from "./Game";
+import {useState, useEffect} from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +35,14 @@ export default function Spelkort(props) {
           <Grid container justify="center" spacing={spacing}>
             {props.answers.map((value) => (
               <Grid key={value} item xs={6} sm={6} md={6}>
-                <Paper onClick={() => {props.onClick(value)}} className={classes.paper} elevation={3}>
+                <Paper 
+                  onClick={() => {
+                    if (!props.answered)
+                      props.onClick(value)
+                  }} 
+                  className={classes.paper} elevation={3} 
+                  style={value === props.correctAnswer && props.answered ? {border: "2px solid green", minWidth: 96, minHeight: 46} : null}
+                >
                   <Typography variant="BUTTON TEXT" color="textPrimary">
                     {value}
                   </Typography>
