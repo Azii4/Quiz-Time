@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
-import Game from "./Game";
-import {useState, useEffect} from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     minWidth: 100,
     minHeight: 50,
-    cursor: "pointer"
+    cursor: "pointer",
   },
   control: {
     padding: theme.spacing(2),
   },
 }));
 
-export default function Spelkort(props) {
+export default function GameCards(props) {
   const [spacing] = React.useState(2);
   const classes = useStyles();
 
@@ -35,15 +33,19 @@ export default function Spelkort(props) {
           <Grid container justify="center" spacing={spacing}>
             {props.answers.map((value) => (
               <Grid key={value} item xs={6} sm={6} md={6}>
-                <Paper 
+                <Paper
                   onClick={() => {
-                    if (!props.answered)
-                      props.onClick(value)
-                  }} 
-                  className={classes.paper} elevation={3} 
+                    if (!props.answered) props.onClick(value);
+                  }}
+                  className={classes.paper}
+                  elevation={3}
                   style={{
-                    ...props.answered && value === props.correctAnswer ? {backgroundColor: "#2ecc71"} : null,
-                    ...props.answered && value === props.incorrectAnswer ? {backgroundColor: "#cc2e2e"} : null
+                    ...(props.answered && value === props.correctAnswer
+                      ? { backgroundColor: "#2ecc71" }
+                      : null),
+                    ...(props.answered && value === props.incorrectAnswer
+                      ? { backgroundColor: "#cc2e2e" }
+                      : null),
                   }}
                 >
                   <Typography variant="BUTTON TEXT" color="textPrimary">

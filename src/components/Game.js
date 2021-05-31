@@ -6,7 +6,7 @@ import { saveStandard, saveTimeAttack } from "./LocalStorage";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Spelkort from "./Spelkort";
+import GameCards from "./GameCards";
 import TimerBar from "./TimerBar";
 import { ButtonGroup, Button } from "@material-ui/core";
 
@@ -195,7 +195,7 @@ function Game() {
       <div className="game-lower">
         <div className="answer-container">
           <Typography>
-            <Spelkort
+            <GameCards
               answers={answerList}
               onClick={handleButton}
               correctAnswer={questionList[questionCounter]?.correctAnswer}
