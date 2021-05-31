@@ -4,8 +4,10 @@ import {getQuestions, getCategory} from '../modules/triviaApi'
 import {useLocation} from 'react-router-dom'
 import {saveStandard, saveTimeAttack} from './LocalStorage'
 import Spelkort from "./Spelkort";
+import TimerBar from "./TimerBar";
 
 const questionAmount = 10;
+const timerTime = 10;
 
 function Game(props) {
     const {search} = useLocation()
@@ -22,13 +24,14 @@ function Game(props) {
     const [name, setName] = useState(searchParams.get('name'))
     const [category, setCategory] = useState(searchParams.get('cat')) 
     const [timer, setTimer] = useState(null)
+    const [answered, setAnswered] = useState(false)
 
     const counterValue = useRef(questionCounter)
 
     const startTimer = () => {
         setTimer(setTimeout(() => {
-            nextQuestion()
-        }, 10000))
+          handleButton(null)
+        }, timerTime * 1000))
     }
 
     useEffect(() => {
@@ -82,13 +85,18 @@ function Game(props) {
 
 
     const handleButton = (answer) => {
+      setAnswered(true)
+      if(answer !== null) {
         if(answer === questionList[questionCounter].correctAnswer) {
-            setScore(score + 1)
+          setScore(score + 1)
         }
-        nextQuestion()
+      }
+      setTimeout(nextQuestion, 1500)
     }
+
     const nextQuestion = () => {
-     clearTimeout(timer)
+      setAnswered(false)
+      clearTimeout(timer)
         if(counterValue.current < questionAmount - 1) {
             console.log("Updating question")
             setQuestionCounter(counterValue.current + 1)
@@ -134,12 +142,18 @@ function Game(props) {
           <p>{questionList[questionCounter]?.question ?? "Loading..."}</p>
         </div>
       </div>
+      {isLoaded && gameMode === "1" ? <TimerBar time={timerTime} start={!answered}></TimerBar> : null}
       <div className="game-lower">
         <div className="answer-container">
-            <Spelkort answers={answerList} onClick={handleButton}/>
+            <Spelkort 
+              answers={answerList} 
+              onClick={handleButton} 
+              correctAnswer={questionList[questionCounter]?.correctAnswer} 
+              answered={answered}
+            />
         </div>
       </div>
-      
+      <h1>Score: {score}</h1>
     </div>
   );
 }
