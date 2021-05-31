@@ -1,15 +1,19 @@
 import "../css/game.css"
 import {useState, useEffect, useRef} from 'react'
 import {getQuestions, getCategory} from '../modules/triviaApi'
-import {useLocation} from 'react-router-dom'
+import {useLocation, Link} from 'react-router-dom'
 import {saveStandard, saveTimeAttack} from './LocalStorage'
 import Spelkort from "./Spelkort";
 import TimerBar from "./TimerBar";
+import {
+  ButtonGroup,
+  Button
+} from "@material-ui/core"
 
 const questionAmount = 10;
 const timerTime = 10;
 
-function Game(props) {
+function Game() {
     const {search} = useLocation()
     const searchParams = new URLSearchParams(search)
 
@@ -25,6 +29,7 @@ function Game(props) {
     const [category, setCategory] = useState(searchParams.get('cat')) 
     const [timer, setTimer] = useState(null)
     const [answered, setAnswered] = useState(false)
+    const [incorrectAnswer, setIncorectAnswer] = useState("")
 
     const counterValue = useRef(questionCounter)
 
@@ -89,6 +94,8 @@ function Game(props) {
       if(answer !== null) {
         if(answer === questionList[questionCounter].correctAnswer) {
           setScore(score + 1)
+        } else {
+          setIncorectAnswer(answer)
         }
       }
       setTimeout(nextQuestion, 1500)
@@ -96,6 +103,7 @@ function Game(props) {
 
     const nextQuestion = () => {
       setAnswered(false)
+      setIncorectAnswer("")
       clearTimeout(timer)
         if(counterValue.current < questionAmount - 1) {
             console.log("Updating question")
@@ -132,6 +140,20 @@ function Game(props) {
         <h2>
           Your score: {score} points out of {questionAmount}
         </h2>
+        <ButtonGroup
+          variant="contained"
+          color="primary"
+          aria-label="contained primary button group"
+          fullWidth
+          label="Buttons"
+        >
+          <Button component={Link} to={'/'}>
+            Quit
+          </Button>
+          <Button onClick={() => {startGame(gameMode)}}>
+            Restart
+          </Button>
+        </ButtonGroup>
       </div>
     );
   }
@@ -149,6 +171,7 @@ function Game(props) {
               answers={answerList} 
               onClick={handleButton} 
               correctAnswer={questionList[questionCounter]?.correctAnswer} 
+              incorrectAnswer={incorrectAnswer}
               answered={answered}
             />
         </div>

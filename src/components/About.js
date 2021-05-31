@@ -42,7 +42,12 @@ export default function Leaderboard() {
         <Typography variant="p">
           Quiz Time is divided in two different versions, Standard and, Time
           Attack. The player gets the choice of playing a quiz with all
-          categories or a specific category of their choice.
+          categories or a specific category of their choice. Standard game
+          version is for people who want's to take their time and enyoj the
+          trivia. Time attack is not for the faint of heart, this is the
+          competetive version. In this version you have a battle with time each
+          question, while trying to keep your score up! See you on the
+          leaderboards!
         </Typography>
       </div>
     </Container>

@@ -41,7 +41,10 @@ export default function Spelkort(props) {
                       props.onClick(value)
                   }} 
                   className={classes.paper} elevation={3} 
-                  style={value === props.correctAnswer && props.answered ? {border: "2px solid green", minWidth: 96, minHeight: 46} : null}
+                  style={{
+                    ...props.answered && value === props.correctAnswer ? {backgroundColor: "#2ecc71"} : null,
+                    ...props.answered && value === props.incorrectAnswer ? {backgroundColor: "#cc2e2e"} : null
+                  }}
                 >
                   <Typography variant="BUTTON TEXT" color="textPrimary">
                     {value}
