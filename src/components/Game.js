@@ -152,10 +152,10 @@ function Game() {
   if (gameOver) {
     return (
       <div className="game-container">
-        <h1>Game over!</h1>
-        <h2>
+        <Typography variant="h2">Game over!</Typography>
+        <Typography variant="h4">
           Your score: {score} points out of {questionAmount}
-        </h2>
+        </Typography>
         <ButtonGroup
           variant="contained"
           color="primary"
@@ -164,14 +164,14 @@ function Game() {
           label="Buttons"
         >
           <Button component={Link} to={"/"}>
-            Quit
+            <Typography>Quit</Typography>
           </Button>
           <Button
             onClick={() => {
               startGame(gameMode);
             }}
           >
-            Restart
+            <Typography>Restart</Typography>
           </Button>
         </ButtonGroup>
       </div>
@@ -205,7 +205,7 @@ function Game() {
           </Typography>
         </div>
       </div>
-      <h1>Score: {score}</h1>
+      <Typography variant="h4">Score: {score}</Typography>
     </div>
   );
 }
