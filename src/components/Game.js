@@ -142,7 +142,7 @@ function Game(props) {
           <p>{questionList[questionCounter]?.question ?? "Loading..."}</p>
         </div>
       </div>
-      {isLoaded ? <TimerBar time={timerTime} start={!answered}></TimerBar> : null}
+      {isLoaded && gameMode === "1" ? <TimerBar time={timerTime} start={!answered}></TimerBar> : null}
       <div className="game-lower">
         <div className="answer-container">
             <Spelkort 
