@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 export const Categories = {
   GENERAL_KNOWLEDGE: 9,
@@ -24,41 +24,47 @@ export const Categories = {
   COMICS: 29,
   GADGETS: 30,
   ANIME_AND_MANGA: 31,
-  CARTOONS_AND_ANIMATIONS: 32
-}
+  CARTOONS_AND_ANIMATIONS: 32,
+};
 
 export function getCategory(categoryId) {
   switch (categoryId) {
     case "movies":
-      return Categories.FILM
+      return Categories.FILM;
     case "music":
-      return Categories.MUSIC
+      return Categories.MUSIC;
     case "videoGames":
-      return Categories.VIDEO_GAMES
+      return Categories.VIDEO_GAMES;
     case "history":
-      return Categories.HISTORY
+      return Categories.HISTORY;
     case "geography":
-      return Categories.GEOGRAPHY
+      return Categories.GEOGRAPHY;
     case "animals":
-      return Categories.ANIMALS
+      return Categories.ANIMALS;
     default:
-      return ""
+      return "";
   }
 }
 
-export function getQuestions(amount, category, difficulty = 'medium', type = 'multiple') {
+export function getQuestions(
+  amount,
+  category,
+  difficulty = "medium",
+  type = "multiple"
+) {
   return new Promise((resolve, reject) => {
-    axios.get('https://opentdb.com/api.php', {
-      params: {
-        amount: amount,
-        category: category,
-        difficulty: difficulty,
-        type: type
-      }
-    })
-      .then(res => {
-        resolve(res.data.results)
+    axios
+      .get("https://opentdb.com/api.php", {
+        params: {
+          amount: amount,
+          category: category,
+          difficulty: difficulty,
+          type: type,
+        },
       })
-      .catch(err => reject(err))
-  })
+      .then((res) => {
+        resolve(res.data.results);
+      })
+      .catch((err) => reject(err));
+  });
 }

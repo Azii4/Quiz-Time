@@ -80,7 +80,6 @@ export default function Layout({ children }) {
           </Typography>
 
           <div className={classes.content}>{children}</div>
-
           <BottomNavigation className={classes.footer}>
             <Link className={classes.link} underline="none" href="/about">
               About Quiz Time

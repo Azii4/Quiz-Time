@@ -1,13 +1,13 @@
 export function saveStandard(name, category, score) {
   var todayDate = new Date().toISOString().slice(0, 10);
   const standardLeader = [
-    ...JSON.parse(localStorage.getItem("Standard LeaderBoard")) ?? [],
+    ...(JSON.parse(localStorage.getItem("Standard LeaderBoard")) ?? []),
     {
       name: name,
       Category: getCategoryString(category),
       Date: todayDate,
       Score: score,
-    }
+    },
   ];
 
   let jsonStandardLeader = JSON.stringify(standardLeader);
@@ -17,14 +17,14 @@ export function saveStandard(name, category, score) {
 export function saveTimeAttack(name, category, score, time) {
   var todayDate = new Date().toISOString().slice(0, 10);
   const TimeAttackLeader = [
-    ...JSON.parse(localStorage.getItem("TimeAttack LeaderBoard")) ?? [],
+    ...(JSON.parse(localStorage.getItem("TimeAttack LeaderBoard")) ?? []),
     {
       name: name,
       Category: getCategoryString(category),
       Date: todayDate,
       time: time,
       Score: score,
-    }
+    },
   ];
   let jsonTimeAttackLeader = JSON.stringify(TimeAttackLeader);
   localStorage.setItem("TimeAttack LeaderBoard", jsonTimeAttackLeader);
@@ -33,20 +33,20 @@ export function saveTimeAttack(name, category, score, time) {
 const getCategoryString = (category) => {
   switch (category) {
     case "all":
-      return "All Categories"
+      return "All Categories";
     case "movies":
-      return "Movies"
+      return "Movies";
     case "music":
-      return "Music"
+      return "Music";
     case "videoGames":
-      return "Video Games"
+      return "Video Games";
     case "history":
-      return "History"
+      return "History";
     case "geography":
-      return "Geography"
+      return "Geography";
     case "animals":
-      return "Animals"
+      return "Animals";
     default:
-      return "Missing Category"
+      return "Missing Category";
   }
-}
+};

@@ -31,8 +31,8 @@ export default function Home() {
   const [category, setCategory] = useState("all");
   const [button, setButton] = useState("");
 
-  const standardLink = `/game?name=${name}&cat=${category}&mode=0`
-  const timeattackLink = `/game?name=${name}&cat=${category}&mode=1`
+  const standardLink = `/game?name=${name}&cat=${category}&mode=0`;
+  const timeattackLink = `/game?name=${name}&cat=${category}&mode=1`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,7 +80,7 @@ export default function Home() {
         <ButtonGroup
           value={button}
           onClick={(e) => {
-            setButton(e.target.value)
+            setButton(e.target.value);
           }}
           variant="contained"
           color="primary"
