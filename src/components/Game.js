@@ -1,15 +1,17 @@
-import "../css/game.css";
 import { useState, useEffect, useRef } from "react";
 import { getQuestions, getCategory } from "../modules/triviaApi";
 import { useLocation, Link } from "react-router-dom";
 import { saveStandard, saveTimeAttack } from "./LocalStorage";
-import Card from "@material-ui/core/Card";
-import Typography from "@material-ui/core/Typography";
+
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { ButtonGroup, Button } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+
+import decode from "../modules/decode";
+import "../css/game.css";
 import GameCards from "./GameCards";
 import TimerBar from "./TimerBar";
-import { ButtonGroup, Button } from "@material-ui/core";
-import decode from "../modules/decode";
 
 const questionAmount = 10;
 const timerTime = 10;
