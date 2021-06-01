@@ -40,7 +40,7 @@ web-vitals: "^1.0.1"</br>
 ### Installing
 
 ```
-$ cd clone https://github.com/Azii4/Quiz-Time
+$ git clone https://github.com/Azii4/Quiz-Time
 $ cd quiz-time
 $ npm install
 ```
