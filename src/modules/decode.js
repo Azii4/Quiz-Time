@@ -7,5 +7,6 @@ export default function decode(text) {
     .replaceAll("&hellip;", "…")
     .replaceAll("&aacute;", "á")
     .replaceAll("&Ntilde;", "Ñ")
-    .replaceAll("&Oacute;", "Ó");
+    .replaceAll("&Oacute;", "Ó")
+    .replaceAll("&amp;", "&");
 }

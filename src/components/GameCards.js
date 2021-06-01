@@ -14,9 +14,18 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    minWidth: 100,
-    minHeight: 50,
+    minWidth: 160,
+    minHeight: 80,
     cursor: "pointer",
+    [theme.breakpoints.down("md")]: {
+      minWidth: 130,
+      minHeight: 80,
+    },
+    [theme.breakpoints.down("xs")]: {
+      minWidth: 130,
+      minHeight: 80,
+      padding: "5%",
+    },
   },
   control: {
     padding: theme.spacing(2),

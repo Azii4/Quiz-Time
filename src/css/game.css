@@ -8,7 +8,12 @@
   padding-left: 40px;
   padding-right: 40px;
 }
-
+@media only screen and (max-width: 600px) {
+  .game-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 .answer-container button {
   margin: 1rem;
 }

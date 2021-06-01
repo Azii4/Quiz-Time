@@ -38,7 +38,7 @@ function Game() {
     card: {
       position: "relative",
       width: "700px",
-      height: "100px",
+      height: "150px",
       [theme.breakpoints.down("md")]: {
         width: "600px",
         height: "150px",
@@ -50,17 +50,19 @@ function Game() {
     },
     question: {
       position: "absolute",
-      top: "35px",
+      top: "35%",
       left: "0",
       right: "0",
       [theme.breakpoints.down("md")]: {
-        top: "55px",
+        top: "35%",
       },
       [theme.breakpoints.down("xs")]: {
-        top: "75px",
+        top: "25%",
+        padding: "5%",
       },
     },
   });
+
   const classes = useStyles();
 
   const startTimer = () => {
@@ -171,7 +173,7 @@ function Game() {
     return (
       <div className="game-container">
         <Typography variant="h2">Game over!</Typography>
-        <Typography variant="h4">
+        <Typography variant="h5">
           Your score: {score} points out of {questionAmount}
         </Typography>
         <ButtonGroup

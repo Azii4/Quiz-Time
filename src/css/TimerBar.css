@@ -1,20 +1,29 @@
 .bar {
-    border: 1px solid #666;
-    height: 10px;
-    width: 100%;
-    border-radius: 5px;
+  border: 1px solid #666;
+  height: 10px;
+  width: 83%;
+  border-radius: 5px;
 }
-
+@media only screen and (min-width: 600px) {
+  .bar {
+    width: 92%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .bar {
+    width: 100%;
+  }
+}
 .in {
-    height: 100%;
-    background-color: #3f51b5;
+  height: 100%;
+  background-color: #3f51b5;
 }
 
 @keyframes fill {
-    0% {
-      width: 100%;
-    }
-    100% {
-      width: 0%;
-    }
+  0% {
+    width: 100%;
   }
+  100% {
+    width: 0%;
+  }
+}
