@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
     },
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    minHeight: 300,
   },
 }));
 
@@ -82,7 +81,7 @@ export default function NavTabs() {
           variant="fullWidth"
           value={value}
           onChange={handleChange}
-          aria-label="nav tabs example"
+          aria-label="nav tabs"
         >
           <LinkTab label="Standard" href="/standard" {...a11yProps(0)} />
           <LinkTab label="Time Attack" href="/timeAttack" {...a11yProps(1)} />

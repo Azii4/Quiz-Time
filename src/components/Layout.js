@@ -33,7 +33,6 @@ const useStyles = makeStyles({
   },
   title: {
     marginTop: 20,
-    marginBottom: 20,
   },
   footer: {
     backgroundColor: "#83898E",
@@ -73,6 +72,7 @@ export default function Layout({ children }) {
             variant="h1"
             color="textPrimary"
             align="center"
+            paragraph="true"
           >
             <Link href="/" underline="none" color="primary">
               Quiz Time

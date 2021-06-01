@@ -9,15 +9,32 @@ import {
   TableHead,
   TableRow,
   Paper,
+  createMuiTheme,
 } from "@material-ui/core";
+
+let theme = createMuiTheme();
+
+const useStyles = makeStyles({
+  root: {
+    borderRadius: 0,
+  },
+  table: {
+    minWidth: "100%",
+  },
+});
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.primary.light,
     color: theme.palette.common.white,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 10,
+    },
   },
   body: {
-    fontSize: 14,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 10,
+    },
   },
 }))(TableCell);
 
@@ -38,15 +55,6 @@ function loadStandard() {
     return JSON.parse(aValue);
   }
 }
-
-const useStyles = makeStyles({
-  root: {
-    borderRadius: 0,
-  },
-  table: {
-    minWidth: "100%",
-  },
-});
 
 export default function Standard() {
   const classes = useStyles();

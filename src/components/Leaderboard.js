@@ -1,26 +1,27 @@
 import React from "react";
 import NavTabs from "./NavTabs";
-import { Typography, Container, makeStyles } from "@material-ui/core";
+import {
+  Typography,
+  Container,
+  makeStyles,
+  createMuiTheme,
+} from "@material-ui/core";
+
+let theme = createMuiTheme();
 
 const useStyles = makeStyles({
-  leaderboard: {
-    marginBottom: 20,
+  container: {
+    [theme.breakpoints.down("xs")]: {
+      padding: 0,
+      height: "100%",
+    },
   },
 });
 
 export default function Leaderboard() {
   const classes = useStyles();
-
   return (
-    <Container size="sm">
-      <Typography
-        variant="h4"
-        color="textPrimary"
-        align="center"
-        className={classes.leaderboard}
-      >
-        Leaderboard
-      </Typography>
+    <Container size="sm" className={classes.container}>
       <NavTabs />
     </Container>
   );
