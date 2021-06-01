@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GameCards from "./GameCards";
 import TimerBar from "./TimerBar";
 import { ButtonGroup, Button } from "@material-ui/core";
-import decode from "../modules/decode"
+import decode from "../modules/decode";
 
 const questionAmount = 10;
 const timerTime = 10;
@@ -50,7 +50,7 @@ function Game() {
       setTimeout(() => {
         handleButton(null);
       }, timerTime * 1000)
-    )
+    );
   };
 
   useEffect(() => {
@@ -178,42 +178,46 @@ function Game() {
     );
   }
 
-  if (isLoaded) return (
-    <div className="game-container">
-      <div className="game-upper">
-        <div className="question-container">
-          <Card className={classes.card}>
-            <Typography className={classes.question}>
-              {decode(questionList[questionCounter]?.question) ?? "Loading..."}
+  if (isLoaded)
+    return (
+      <div className="game-container">
+        <div className="game-upper">
+          <div className="question-container">
+            <Card className={classes.card}>
+              <Typography className={classes.question}>
+                {decode(questionList[questionCounter]?.question) ??
+                  "Loading..."}
+              </Typography>
+            </Card>
+          </div>
+        </div>
+        {isLoaded && gameMode === "1" ? (
+          <TimerBar time={timerTime} start={!answered}></TimerBar>
+        ) : null}
+        <div className="game-lower">
+          <div className="answer-container">
+            <Typography>
+              <GameCards
+                answers={answerList}
+                onClick={handleButton}
+                correctAnswer={questionList[questionCounter]?.correctAnswer}
+                incorrectAnswer={incorrectAnswer}
+                answered={answered}
+              />
             </Typography>
-          </Card>
+          </div>
         </div>
+        <Typography paragraph="true" variant="h4">
+          Score: {score}
+        </Typography>
       </div>
-      {isLoaded && gameMode === "1" ? (
-        <TimerBar time={timerTime} start={!answered}></TimerBar>
-      ) : null}
-      <div className="game-lower">
-        <div className="answer-container">
-          <Typography>
-            <GameCards
-              answers={answerList}
-              onClick={handleButton}
-              correctAnswer={questionList[questionCounter]?.correctAnswer}
-              incorrectAnswer={incorrectAnswer}
-              answered={answered}
-            />
-          </Typography>
-        </div>
-      </div>
-      <Typography variant="h4">Score: {score}</Typography>
-    </div>
-  );
+    );
 
   return (
     <div className="game-container">
-      <img src={process.env.PUBLIC_URL + '/spinner.svg'} alt="Loading..."></img>
+      <img src={process.env.PUBLIC_URL + "/spinner.svg"} alt="Loading..."></img>
     </div>
-  )
+  );
 }
 
 export default Game;
