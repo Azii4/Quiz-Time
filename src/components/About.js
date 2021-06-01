@@ -70,8 +70,8 @@ export default function Leaderboard() {
           </Typography>
 
           <Typography variant="body1">
-            While Time attack is not for the faint of heart! It's the
-            competetive version of the Game!
+            Time attack is not for the faint of heart! It's the competetive
+            version of the Game!
           </Typography>
 
           <Typography variant="body1" paragraph="true">
