@@ -58,6 +58,4 @@ Varför react
 
 Contributors names
 
-Mattias
-Josefine 
-Joel
+Mattias, Josefine and Joel
