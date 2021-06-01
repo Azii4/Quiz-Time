@@ -1,28 +1,25 @@
 # Quiz Time
 
 Quiz Time is created by two Information Architecture students and one
-System Development student as a project in the course
-https://mau-webb.github.io/resurser/da355a-vt21/ 
-DA355A - Multi-platform applications with web engineers / DA344A -Web applications for mobile devices.
+System Development student at Malmö University as a group project in the joint course DA355A - Multi-platform applications with web engineers / DA344A -Web applications for mobile devices
+https://mau-webb.github.io/resurser/da355a-vt21/
 
-At Malmö University. Quiz Time is a game which is built with JavaScript library</br>
-https://reactjs.org React using the framework</br>
-https://material-ui.com Material UI for User Interface and</br>
+Quiz Time is a game which is built with: </br>
+https://reactjs.org JavaScript library React</br>
+https://material-ui.com Material UI for User Interface</br>
+https://github.com/axios/axios Axios for AJAX requests</br>
 https://opentdb.com Open Trivia Database API forquiz content.</br>
 
-The Game
+### The Game
 
-Quiz Time is divided in two different versions, Standard and, Time
-Attack. The player gets the choice of playing a quiz with all
-categories or a specific category of their choice. Standard game
-version is for people who want's to take their time and enyoj the
-trivia. Time attack is not for the faint of heart, this is the
-competetive version. In this version you have a battle with time each
-question, while trying to keep your score up! 
+Quiz Time offers players two different versions of the game: Standard or Time Attack</br>
+The player can play all categories or choose between one of 6 selected categories:</br>
+Movies, Music, Video Games, History, Geography or Animals</br>
+The Standard game version is for people who want to relax and play a Quiz without any stress.</br>
+Time attack is not for the faint of heart! It's the competetive version of the Game!</br>
+You get 10 seconds to answer each question while trying to keep a perfect score!</br>
+</br>
 See you on the leaderboards!
-
-## Why react?
-Varför react
 
 ## Getting Started
 
@@ -42,23 +39,23 @@ web-vitals: "^1.0.1"</br>
 
 ### Installing
 
-* 
-
+```
+$ git clone https://github.com/Azii4/Quiz-Time
+$ cd quiz-time
+$ npm install
+```
 
 ### Executing program
 
-* Npm start
-*
 ```
-code blocks for commands
+$ npm start
 ```
 
+## Why react?
+Varför react
 
 ## Authors
 
-Contributors names and contact info
+Contributors names
 
-Mattias
-Josefine 
-Joel
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Mattias, Josefine and Joel
