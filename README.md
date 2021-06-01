@@ -21,6 +21,9 @@ competetive version. In this version you have a battle with time each
 question, while trying to keep your score up! 
 See you on the leaderboards!
 
+## Why react?
+Varför react
+
 ## Getting Started
 
 ### Dependencies
@@ -50,8 +53,6 @@ web-vitals: "^1.0.1"</br>
 code blocks for commands
 ```
 
-## Why react?
-Varför react
 
 ## Authors
 
