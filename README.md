@@ -14,12 +14,13 @@ https://opentdb.com Open Trivia Database API forquiz content.</br>
 
 Quiz Time offers players two different versions of the game: Standard or Time Attack</br>
 The player can play all categories or choose between one of 6 selected categories:</br>
-Movies, Music, Video Games, History, Geography or Animals</br>
+*Movies, Music, Video Games, History, Geography or Animals*</br>
+</br>
 The Standard game version is for people who want to relax and play a Quiz without any stress.</br>
 Time attack is not for the faint of heart! It's the competetive version of the Game!</br>
 You get 10 seconds to answer each question while trying to keep a perfect score!</br>
 </br>
-See you on the leaderboards!
+*See you on the leaderboards!*
 
 ## Getting Started
 
@@ -54,11 +55,11 @@ $ npm start
 ## Why react?
 React, Angular and Vue.js are three of the largest Java Script frameworks right now.</br>
 </br>
-###React: Managed by Facebook. For UI development. Possible to choose among external libraries such as Material-UI library e.g.</br>
+**React**: Managed by Facebook. For UI development. Possible to choose among external libraries such as Material-UI library e.g.</br>
 </br>
-###Angular: Managed by Google. Long learning time. Full-stack. There are extremely many tools, but it can be difficult to get started with. Uses JavaScript and TypeScript.</br>
+**Angular**: Managed by Google. Long learning time. Full-stack. There are extremely many tools, but it can be difficult to get started with. Uses JavaScript and TypeScript.</br>
 </br>
-###Vue: Doesn’t have a large organization behind it, but has despite this a recognized good documentation. Many large companies use Vue.</br>
+**Vue**: Doesn’t have a large organization behind it, but has despite this a recognized good documentation. Many large companies use Vue.</br>
 </br>
 We in the group had all worked with React in our previous assignment so it was natural for us to continue to learn more about React and Material-UI as we also felt that it could fit our project well. There is also a large community using React which means that there is a lot of information to read and help to find.</br>
 </br>
