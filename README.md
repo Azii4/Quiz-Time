@@ -50,12 +50,8 @@ web-vitals: "^1.0.1"</br>
 code blocks for commands
 ```
 
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+## Why react?
+Varför react
 
 ## Authors
 
