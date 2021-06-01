@@ -58,8 +58,12 @@ function LinkTab(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    "& .MuiBox-root": {
+      padding: 0,
+    },
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    minHeight: 300,
   },
 }));
 
@@ -84,7 +88,7 @@ export default function NavTabs() {
           <LinkTab label="Time Attack" href="/timeAttack" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
+      <TabPanel value={value} index={0} classes={{ root: classes.tab }}>
         <Standard />
       </TabPanel>
       <TabPanel value={value} index={1}>

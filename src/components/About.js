@@ -4,6 +4,8 @@ import { Typography, Container, makeStyles, Link } from "@material-ui/core";
 const useStyles = makeStyles({
   text: {
     marginBottom: 20,
+    paddingRight: 50,
+    paddingLeft: 50,
   },
 });
 
@@ -19,12 +21,12 @@ export default function Leaderboard() {
             one System Development student as a project in the course{" "}
             <Link href="https://mau-webb.github.io/resurser/da355a-vt21/">
               {" "}
-              DA355A - Multi-platform applications with web engineers / DA344A -
-              Web applications for mobile devices
+              Multi-platform applications with web engineers / Web applications
+              for mobile devices
             </Link>{" "}
             at Malmö University. Quiz Time is a game which is built with
             JavaScript library
-            <Link href="https://reactjs.org"> React</Link> using the framework
+            <Link href="https://reactjs.org"> React</Link> using framework
             <Link href="https://material-ui.com"> Material UI </Link> for User
             Interface and library{" "}
             <Link href="https://github.com/axios/axios">Axios</Link> for AJAX
@@ -45,12 +47,12 @@ export default function Leaderboard() {
           The Game
         </Typography>
         <div className={classes.text}>
-          <Typography variant="body1">
+          <Typography variant="body1" paragraph="true">
             Quiz Time offers players two different versions of the game:
           </Typography>
 
-          <Typography variant="body1" paragraph="true">
-            <b>Standard</b> and <b>Time Attack</b>
+          <Typography variant="h6" paragraph="true">
+            <b>Standard</b> or <b>Time Attack</b>
           </Typography>
 
           <Typography variant="body1">
@@ -67,10 +69,14 @@ export default function Leaderboard() {
             Quiz without any stress.
           </Typography>
 
-          <Typography variant="body1" paragraph="true">
+          <Typography variant="body1">
             While Time attack is not for the faint of heart! It's the
-            competetive version of the Game, in Time Attack you have 10 seconds
-            to answer each question while trying to keep a perfect score!
+            competetive version of the Game!
+          </Typography>
+
+          <Typography variant="body1" paragraph="true">
+            You get 10 seconds to answer each question while trying to keep a
+            perfect score!
           </Typography>
 
           <Typography variant="h6" paragraph="true">
