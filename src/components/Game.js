@@ -5,7 +5,7 @@ import { useLocation, Link } from "react-router-dom";
 import { saveStandard, saveTimeAttack } from "./LocalStorage";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import GameCards from "./GameCards";
 import TimerBar from "./TimerBar";
 import { ButtonGroup, Button } from "@material-ui/core";
@@ -33,14 +33,32 @@ function Game() {
   const [incorrectAnswer, setIncorectAnswer] = useState("");
 
   const counterValue = useRef(questionCounter);
-
+  let theme = createMuiTheme();
   const useStyles = makeStyles({
     card: {
-      minWidth: "700",
-      minHeight: "100",
+      position: "relative",
+      width: "700px",
+      height: "100px",
+      [theme.breakpoints.down("md")]: {
+        width: "600px",
+        height: "150px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        width: "350px",
+        height: "200px",
+      },
     },
     question: {
-      padding: "10%",
+      position: "absolute",
+      top: "35px",
+      left: "0",
+      right: "0",
+      [theme.breakpoints.down("md")]: {
+        top: "55px",
+      },
+      [theme.breakpoints.down("xs")]: {
+        top: "75px",
+      },
     },
   });
   const classes = useStyles();
@@ -184,7 +202,7 @@ function Game() {
         <div className="game-upper">
           <div className="question-container">
             <Card className={classes.card}>
-              <Typography className={classes.question}>
+              <Typography paragraph="true" className={classes.question}>
                 {decode(questionList[questionCounter]?.question) ??
                   "Loading..."}
               </Typography>
