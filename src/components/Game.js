@@ -35,6 +35,30 @@ function Game() {
   const counterValue = useRef(questionCounter);
   let theme = createMuiTheme();
   const useStyles = makeStyles({
+    gameContainer: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "2rem",
+      height: "100%",
+      paddingLeft: "40px",
+      paddingRight: "40px",
+      [theme.breakpoints.down("xs")]: {
+        paddingLeft: "20px",
+        paddingRight: "20px",
+      },
+    },
+    gameOver: {
+      position: "absolute",
+      top: "450px",
+      width: "400px",
+      height: "50px",
+      [theme.breakpoints.down("xs")]: {
+        width: "300px",
+        height: "50px",
+      },
+    },
     card: {
       position: "relative",
       width: "700px",
@@ -55,6 +79,7 @@ function Game() {
       right: "0",
       [theme.breakpoints.down("md")]: {
         top: "35%",
+        padding: "5%",
       },
       [theme.breakpoints.down("xs")]: {
         top: "25%",
@@ -171,12 +196,13 @@ function Game() {
 
   if (gameOver) {
     return (
-      <div className="game-container">
+      <div className={classes.gameContainer}>
         <Typography variant="h2">Game over!</Typography>
         <Typography variant="h5">
           Your score: {score} points out of {questionAmount}
         </Typography>
         <ButtonGroup
+          className={classes.gameOver}
           variant="contained"
           color="primary"
           aria-label="contained primary button group"
@@ -200,7 +226,7 @@ function Game() {
 
   if (isLoaded)
     return (
-      <div className="game-container">
+      <div className={classes.gameContainer}>
         <div className="game-upper">
           <div className="question-container">
             <Card className={classes.card}>
@@ -234,7 +260,7 @@ function Game() {
     );
 
   return (
-    <div className="game-container">
+    <div className={classes.gameContainer}>
       <img src={process.env.PUBLIC_URL + "/spinner.svg"} alt="Loading..."></img>
     </div>
   );
