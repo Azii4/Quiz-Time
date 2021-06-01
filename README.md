@@ -56,9 +56,8 @@ Varför react
 
 ## Authors
 
-Contributors names and contact info
+Contributors names
 
 Mattias
 Josefine 
 Joel
-ex. [@DomPizzie](https://twitter.com/dompizzie)
