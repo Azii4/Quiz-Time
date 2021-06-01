@@ -25,8 +25,17 @@ See you on the leaderboards!
 
 ### Dependencies
 
-* NPM CI
-* 
+material-ui/core: "^4.11.4"</br>
+testing-library/jest-dom: "^5.11.4"</br>
+testing-library/react: "^11.1.0"</br>
+testing-library/user-event: "^12.1.10"</br>
+axios": "^0.21.1"</br>
+react": "^17.0.2"</br>
+react-dom": "^17.0.2"</br>
+react-router-dom: "^5.2.0"</br>
+react-scripts: "4.0.3"</br>
+web-vitals: "^1.0.1"</br>
+ 
 
 ### Installing
 
