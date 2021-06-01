@@ -56,6 +56,13 @@ function loadStandard() {
   }
 }
 
+function loadSortedStandard() {
+  let sortedStandard = loadStandard();
+  sortedStandard.sort((a, b) => b.Score < a.Score);
+  return sortedStandard;
+}
+
+loadSortedStandard();
 export default function Standard() {
   const classes = useStyles();
   return (
@@ -70,7 +77,7 @@ export default function Standard() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {loadStandard().map((standard) => (
+          {loadSortedStandard().map((standard) => (
             <StyledTableRow key={standard.name}>
               <StyledTableCell component="th" scope="row">
                 {standard.name}
