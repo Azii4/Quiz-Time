@@ -26,7 +26,9 @@ export default function Leaderboard() {
             JavaScript library
             <Link href="https://reactjs.org"> React</Link> using the framework
             <Link href="https://material-ui.com"> Material UI </Link> for User
-            Interface and
+            Interface and library{" "}
+            <Link href="https://github.com/axios/axios">Axios</Link> for AJAX
+            requests to access
             <Link href="https://opentdb.com">
               {" "}
               Open Trivia Database API
@@ -44,7 +46,7 @@ export default function Leaderboard() {
         </Typography>
         <div className={classes.text}>
           <Typography variant="body1">
-            Quiz Time offers the player two different versions of the game:
+            Quiz Time offers players two different versions of the game:
           </Typography>
 
           <Typography variant="body1" paragraph="true">
