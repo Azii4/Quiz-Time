@@ -40,6 +40,9 @@ function loadStandard() {
 }
 
 const useStyles = makeStyles({
+  root: {
+    borderRadius: 0,
+  },
   table: {
     minWidth: "100%",
   },
@@ -48,7 +51,7 @@ const useStyles = makeStyles({
 export default function Standard() {
   const classes = useStyles();
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.root}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
