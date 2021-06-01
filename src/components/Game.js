@@ -49,14 +49,14 @@ function Game() {
       setTimeout(() => {
         handleButton(null);
       }, timerTime * 1000)
-    );
+    )
   };
 
   useEffect(() => {
     counterValue.current = questionCounter; // Konstig lösning för setTimeout-state problemet
   });
 
-  const startGame = (mode) => {
+  const startGame = () => {
     setIsLoaded(false);
     setQuestionCounter(0);
     setGameOver(false);
@@ -104,6 +104,7 @@ function Game() {
   }, [questionList, questionCounter]);
 
   const handleButton = (answer) => {
+    clearTimeout(timer);
     setAnswered(true);
     if (answer !== null) {
       if (answer === questionList[questionCounter].correctAnswer) {
@@ -118,9 +119,7 @@ function Game() {
   const nextQuestion = () => {
     setAnswered(false);
     setIncorectAnswer("");
-    clearTimeout(timer);
     if (counterValue.current < questionAmount - 1) {
-      console.log("Updating question");
       setQuestionCounter(counterValue.current + 1);
       updateAnswers();
       if (gameMode === "1") {
@@ -178,7 +177,7 @@ function Game() {
     );
   }
 
-  return (
+  if (isLoaded) return (
     <div className="game-container">
       <div className="game-upper">
         <div className="question-container">
@@ -208,6 +207,12 @@ function Game() {
       <Typography variant="h4">Score: {score}</Typography>
     </div>
   );
+
+  return (
+    <div className="game-container">
+      <img src={process.env.PUBLIC_URL + '/spinner.svg'} alt="Loading..."></img>
+    </div>
+  )
 }
 
 export default Game;
