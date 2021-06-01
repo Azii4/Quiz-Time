@@ -25,9 +25,9 @@ function Game() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [startTime, setStartTime] = useState(0);
-  const [gameMode, setGameMode] = useState(searchParams.get("mode")); // Tanken är att ha 0 för standard och 1 för timeattack
-  const [name, setName] = useState(searchParams.get("name"));
-  const [category, setCategory] = useState(searchParams.get("cat"));
+  const [gameMode] = useState(searchParams.get("mode")); // Tanken är att ha 0 för standard och 1 för timeattack
+  const [name] = useState(searchParams.get("name"));
+  const [category] = useState(searchParams.get("cat"));
   const [timer, setTimer] = useState(null);
   const [answered, setAnswered] = useState(false);
   const [incorrectAnswer, setIncorectAnswer] = useState("");

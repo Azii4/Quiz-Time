@@ -1,11 +1,6 @@
 import React from "react";
 import NavTabs from "./NavTabs";
-import {
-  Typography,
-  Container,
-  makeStyles,
-  createMuiTheme,
-} from "@material-ui/core";
+import { Container, makeStyles, createMuiTheme } from "@material-ui/core";
 
 let theme = createMuiTheme();
 

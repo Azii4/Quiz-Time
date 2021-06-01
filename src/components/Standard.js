@@ -9,10 +9,7 @@ import {
   TableHead,
   TableRow,
   Paper,
-  createMuiTheme,
 } from "@material-ui/core";
-
-let theme = createMuiTheme();
 
 const useStyles = makeStyles({
   root: {
