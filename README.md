@@ -21,9 +21,6 @@ competetive version. In this version you have a battle with time each
 question, while trying to keep your score up! 
 See you on the leaderboards!
 
-## Why react?
-Varför react
-
 ## Getting Started
 
 ### Dependencies
@@ -42,17 +39,20 @@ web-vitals: "^1.0.1"</br>
 
 ### Installing
 
-* 
-
+```
+$ cd clone https://github.com/Azii4/Quiz-Time
+$ cd quiz-time
+$ npm install
+```
 
 ### Executing program
 
-* Npm start
-*
 ```
-code blocks for commands
+$ npm start
 ```
 
+## Why react?
+Varför react
 
 ## Authors
 
