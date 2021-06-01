@@ -3,12 +3,12 @@
 Quiz Time is created by two Information Architecture students and one
 System Development student as a project in the course
 https://mau-webb.github.io/resurser/da355a-vt21/ 
-DA355A - Multi-platform applications with web engineers / DA344A -Web applications for mobile devices
+DA355A - Multi-platform applications with web engineers / DA344A -Web applications for mobile devices.
 
-at Malmö University. Quiz Time is a game which is built with JavaScript library
-https://reactjs.org React using the framework
-https://material-ui.com Material UI for User Interface and
-https://opentdb.com Open Trivia Database API forquiz content.
+At Malmö University. Quiz Time is a game which is built with JavaScript library</br>
+https://reactjs.org React using the framework</br>
+https://material-ui.com Material UI for User Interface and</br>
+https://opentdb.com Open Trivia Database API forquiz content.</br>
 
 The Game
 
