@@ -29,6 +29,15 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
+const useStyles = makeStyles({
+  root: {
+    borderRadius: 0,
+  },
+  table: {
+    minWidth: "100%",
+  },
+});
+
 function loadTimeAttack() {
   let aValue = localStorage.getItem("TimeAttack LeaderBoard");
 
@@ -39,17 +48,11 @@ function loadTimeAttack() {
   }
 }
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: "100%",
-  },
-});
-
 export default function Standard() {
   const classes = useStyles();
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
+    <TableContainer component={Paper} className={classes.root}>
+      <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Name</StyledTableCell>
