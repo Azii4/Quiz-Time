@@ -55,7 +55,7 @@ function loadTimeAttack() {
 
 function loadSortedTimeAttack() {
   let sortedTimeAttack = loadTimeAttack();
-  sortedTimeAttack.sort((a, b) => b.Score > a.Score);
+  sortedTimeAttack.sort((a, b) => b.Score - a.Score);
   return sortedTimeAttack;
 }
 

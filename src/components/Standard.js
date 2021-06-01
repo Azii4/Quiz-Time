@@ -58,7 +58,7 @@ function loadStandard() {
 
 function loadSortedStandard() {
   let sortedStandard = loadStandard();
-  sortedStandard.sort((a, b) => b.Score > a.Score);
+  sortedStandard.sort((a, b) => b.Score - a.Score);
   return sortedStandard;
 }
 
