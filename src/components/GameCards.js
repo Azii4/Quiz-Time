@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
+import decode from "../modules/decode"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +50,7 @@ export default function GameCards(props) {
                   }}
                 >
                   <Typography variant="BUTTON TEXT" color="textPrimary">
-                    {value}
+                    {decode(value)}
                   </Typography>
                 </Paper>
               </Grid>
