@@ -52,7 +52,18 @@ $ npm start
 ```
 
 ## Why react?
-Varför react
+React, Angular and Vue.js are three of the largest Java Script frameworks right now.</br>
+</br>
+###React: Managed by Facebook. For UI development. Possible to choose among external libraries such as Material-UI library e.g.</br>
+</br>
+###Angular: Managed by Google. Long learning time. Full-stack. There are extremely many tools, but it can be difficult to get started with. Uses JavaScript and TypeScript.</br>
+</br>
+###Vue: Doesn’t have a large organization behind it, but has despite this a recognized good documentation. Many large companies use Vue.</br>
+</br>
+We in the group had all worked with React in our previous assignment so it was natural for us to continue to learn more about React and Material-UI as we also felt that it could fit our project well. There is also a large community using React which means that there is a lot of information to read and help to find.</br>
+</br>
+Angular felt too complicated to learn for us for this project and felt unnecessarily large. Vue could definitely have suited our project, but since we had already started learning React, the choice fell on continuing to work with React.
+
 
 ## Authors
 
