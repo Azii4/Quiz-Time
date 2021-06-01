@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GameCards from "./GameCards";
 import TimerBar from "./TimerBar";
 import { ButtonGroup, Button } from "@material-ui/core";
+import decode from "../modules/decode"
 
 const questionAmount = 10;
 const timerTime = 10;
@@ -183,7 +184,7 @@ function Game() {
         <div className="question-container">
           <Card className={classes.card}>
             <Typography className={classes.question}>
-              {questionList[questionCounter]?.question ?? "Loading..."}
+              {decode(questionList[questionCounter]?.question) ?? "Loading..."}
             </Typography>
           </Card>
         </div>
