@@ -53,6 +53,12 @@ function loadTimeAttack() {
   }
 }
 
+function loadSortedTimeAttack() {
+  let sortedTimeAttack = loadTimeAttack();
+  sortedTimeAttack.sort((a, b) => b.Score > a.Score);
+  return sortedTimeAttack;
+}
+
 export default function Standard() {
   const classes = useStyles();
   return (
@@ -68,7 +74,7 @@ export default function Standard() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {loadTimeAttack().map((timed) => (
+          {loadSortedTimeAttack().map((timed) => (
             <StyledTableRow key={timed.name}>
               <StyledTableCell component="th" scope="row">
                 {timed.name}
