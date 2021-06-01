@@ -10,7 +10,7 @@ https://material-ui.com Material UI for User Interface</br>
 https://github.com/axios/axios Axios for AJAX requests</br>
 https://opentdb.com Open Trivia Database API forquiz content.</br>
 
-# The Game
+### The Game
 
 Quiz Time offers players two different versions of the game: Standard or Time Attack</br>
 The player can play all categories or choose between one of 6 selected categories:</br>
