@@ -19,8 +19,8 @@ const useStyles = makeStyles({
     },
   },
   box: {
-    backgroundColor: "#ffffff80",
-    marginTop: 40,
+    backgroundColor: "#ffffff99",
+    marginTop: 80,
     borderRadius: "1rem",
     [theme.breakpoints.down("xs")]: {
       margin: 0,
