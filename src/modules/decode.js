@@ -1,13 +1,18 @@
+const codes = {
+  "&#039;": "'",
+  "&quot;": '"',
+  "&ldquo;": '"',
+  "&rdquo;": '"',
+  "&hellip;": "…",
+  "&aacute;": "á",
+  "&Ntilde;": "Ñ",
+  "&Oacute;": "Ó",
+  "&Oacute;": "Ó",
+  "&amp;": "&",
+  "&eacute;": "é",
+  "&aring;": "å",
+}
+
 export default function decode(text) {
-  return text
-    .replaceAll("&#039;", "'")
-    .replaceAll("&quot;", '"')
-    .replaceAll("&ldquo;", '"')
-    .replaceAll("&rdquo;", '"')
-    .replaceAll("&hellip;", "…")
-    .replaceAll("&aacute;", "á")
-    .replaceAll("&Ntilde;", "Ñ")
-    .replaceAll("&Oacute;", "Ó")
-    .replaceAll("&amp;", "&")
-    .replaceAll("&eacute;", "é");
+  return text.replaceAll(/&#?\w+;/g, match => codes[match])
 }
