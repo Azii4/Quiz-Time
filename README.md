@@ -1,14 +1,15 @@
 # Quiz Time
 
 Quiz Time is created by two Information Architecture students and one
-System Development student at Malmö University as a group project in the joint course DA355A - Multi-platform applications with web engineers / DA344A -Web applications for mobile devices
-https://mau-webb.github.io/resurser/da355a-vt21/
+System Development student at Malmö University as a group project in the joint course [DA355A - Multi-platform applications with web engineers / DA344A -Web applications for mobile devices](https://mau-webb.github.io/resurser/da355a-vt21/)
 
-Quiz Time is a game which is built with: </br>
-https://reactjs.org JavaScript library React</br>
-https://material-ui.com Material UI for User Interface</br>
-https://github.com/axios/axios Axios for AJAX requests</br>
-https://opentdb.com Open Trivia Database API forquiz content.</br>
+
+Quiz Time is built with:
+- [React](https://reactjs.org)
+- [Material UI](https://material-ui.com) for User Interface
+- [Axios](https://github.com/axios/axios) for AJAX requests
+- [React Router](https://reactrouter.com/) for page navigation
+- [Open Trivia Database API](https://opentdb.com) for quiz content.
 
 ### The Game
 
