@@ -12,17 +12,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    minWidth: 160,
-    minHeight: 80,
     cursor: "pointer",
-    [theme.breakpoints.down("md")]: {
-      minWidth: 130,
+    [theme.breakpoints.up("md")]: {
+      minWidth: 160,
+      maxWidth: 336,
       minHeight: 80,
     },
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       minWidth: 130,
       minHeight: 80,
-      padding: "5%",
     },
   },
   control: {

@@ -66,9 +66,15 @@ function Game() {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-
-      width: 688,
-      height: 150,
+      [theme.breakpoints.up("md")]: {
+        width: 688,
+        height: 150,
+      },
+      [theme.breakpoints.down("sm")]: {
+        minWidth: 130,
+        minHeight: 80,
+        padding: "5%",
+      },
     },
   });
 

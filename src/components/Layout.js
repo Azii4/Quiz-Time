@@ -35,7 +35,6 @@ const useStyles = makeStyles({
     backgroundColor: "#6471BE",
     height: 40,
     borderRadius: "0 0 1rem 1rem",
-    display: "flex",
     [theme.breakpoints.down("xs")]: {
       borderRadius: 0,
       bottom: 0,
