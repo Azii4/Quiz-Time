@@ -5,9 +5,9 @@ export default function TimerBar(props) {
   const barRef = useRef(null);
 
   return (
-    <div class="bar">
+    <div className="bar">
       <div
-        class="in"
+        className="in"
         ref={barRef}
         style={
           props.start
