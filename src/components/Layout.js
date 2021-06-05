@@ -5,7 +5,7 @@ import {
   Container,
   Link,
   Box,
-  BottomNavigation
+  BottomNavigation,
 } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -36,11 +36,13 @@ const useStyles = makeStyles({
     marginTop: 20,
   },
   footer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#6471BE",
     height: 40,
     borderRadius: "0 0 1rem 1rem",
     display: "flex",
-    alignItems: "center",
     [theme.breakpoints.down("xs")]: {
       borderRadius: 0,
       bottom: 0,
@@ -81,11 +83,11 @@ export default function Layout({ children }) {
           </Typography>
 
           <div className={classes.content}>{children}</div>
-          <BottomNavigation className={classes.footer}>
+          <footer className={classes.footer}>
             <Link className={classes.link} underline="none" href="/about">
               About Quiz Time
             </Link>
-          </BottomNavigation>
+          </footer>
         </Box>
       </Container>
     </>
