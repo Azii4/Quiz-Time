@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Button,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -58,6 +59,10 @@ function loadSortedStandard() {
   sortedStandard.sort((a, b) => b.Score - a.Score);
   return sortedStandard;
 }
+function clearStandard() {
+  console.log("tehe");
+  localStorage.removeItem("Standard LeaderBoard");
+}
 
 loadSortedStandard();
 export default function Standard() {
@@ -88,6 +93,9 @@ export default function Standard() {
           ))}
         </TableBody>
       </Table>
+      <Button value="clearLeaderboard" type="submit" onClick={clearStandard}>
+        clear Leaderboard
+      </Button>
     </TableContainer>
   );
 }

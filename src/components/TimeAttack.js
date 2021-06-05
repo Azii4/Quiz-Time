@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Button,
 } from "@material-ui/core";
 
 const StyledTableCell = withStyles((theme) => ({
@@ -73,6 +74,11 @@ function loadSortedTimeAttack() {
   return sortedTimeAttack;
 }
 
+function clearTimeAttack() {
+  localStorage.removeItem("TimeAttack LeaderBoard");
+  loadSortedTimeAttack();
+}
+
 export default function Standard() {
   const classes = useStyles();
   return (
@@ -101,6 +107,9 @@ export default function Standard() {
           ))}
         </TableBody>
       </Table>
+      <Button value="clearLeaderboard" type="submit" onClick={clearTimeAttack}>
+        Clear Leaderboard
+      </Button>
     </TableContainer>
   );
 }
