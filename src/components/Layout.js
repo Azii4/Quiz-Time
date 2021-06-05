@@ -5,7 +5,7 @@ import {
   Container,
   Link,
   Box,
-  BottomNavigation,
+  BottomNavigation
 } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core/styles";
 
@@ -19,9 +19,10 @@ const useStyles = makeStyles({
     },
   },
   box: {
-    backgroundColor: "#ffffff99",
+    backgroundColor: "#ffffff80",
     marginTop: 80,
     borderRadius: "1rem",
+    backdropFilter: "blur(5px)",
     [theme.breakpoints.down("xs")]: {
       margin: 0,
       borderRadius: 0,
