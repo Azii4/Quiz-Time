@@ -228,15 +228,13 @@ function Game() {
 
         <div className="game-lower">
           <div className="answer-container">
-            <Typography>
-              <GameCards
-                answers={answerList}
-                onClick={handleButton}
-                correctAnswer={questionList[questionCounter]?.correctAnswer}
-                incorrectAnswer={incorrectAnswer}
-                answered={answered}
-              />
-            </Typography>
+            <GameCards
+              answers={answerList}
+              onClick={handleButton}
+              correctAnswer={questionList[questionCounter]?.correctAnswer}
+              incorrectAnswer={incorrectAnswer}
+              answered={answered}
+            />
           </div>
         </div>
 
