@@ -1,7 +1,6 @@
 import React from "react";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import {
-  withStyles,
-  makeStyles,
   Table,
   TableBody,
   TableCell,

@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Typography,
-  makeStyles,
-  Container,
-  Link,
-  Box,
-  BottomNavigation,
-} from "@material-ui/core";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { Typography, Container, Link, Box } from "@material-ui/core";
 
 let theme = createMuiTheme();
 
