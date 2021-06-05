@@ -7,12 +7,11 @@ const codes = {
   "&aacute;": "á",
   "&Ntilde;": "Ñ",
   "&Oacute;": "Ó",
-  "&Oacute;": "Ó",
   "&amp;": "&",
   "&eacute;": "é",
   "&aring;": "å",
-}
+};
 
 export default function decode(text) {
-  return text.replaceAll(/&#?\w+;/g, match => codes[match])
+  return text.replaceAll(/&#?\w+;/g, (match) => codes[match]);
 }
