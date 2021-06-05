@@ -4,9 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 import { saveStandard, saveTimeAttack } from "./LocalStorage";
 
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
-import { ButtonGroup, Button } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
+import { ButtonGroup, Button, Typography, Card } from "@material-ui/core";
 
 import decode from "../modules/decode";
 import "../css/game.css";

@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import { Typography } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 import decode from "../modules/decode";
 
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +56,7 @@ export default function GameCards(props) {
                       : null),
                   }}
                 >
-                  <Typography variant="BUTTON TEXT" color="textPrimary">
+                  <Typography variant="button" color="textPrimary">
                     {decode(value)}
                   </Typography>
                 </Paper>
