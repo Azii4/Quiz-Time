@@ -72,7 +72,7 @@ export default function Layout({ children }) {
             variant="h1"
             color="textPrimary"
             align="center"
-            paragraph="true"
+            paragraph={true}
           >
             <Link href="/" underline="none" color="primary">
               Quiz Time

@@ -43,15 +43,15 @@ export default function Leaderboard() {
           </Typography>
           <br></br>
         </div>
-        <Typography variant="h4" align="center" paragraph="true">
+        <Typography variant="h4" align="center" paragraph={true}>
           The Game
         </Typography>
         <div className={classes.text}>
-          <Typography variant="body1" paragraph="true">
+          <Typography variant="body1" paragraph={true}>
             Quiz Time offers players two different versions of the game:
           </Typography>
 
-          <Typography variant="h6" paragraph="true">
+          <Typography variant="h6" paragraph={true}>
             <b>Standard</b> or <b>Time Attack</b>
           </Typography>
 
@@ -60,7 +60,7 @@ export default function Leaderboard() {
             selected categories:
           </Typography>
 
-          <Typography variant="body1" paragraph="true">
+          <Typography variant="body1" paragraph={true}>
             <i>Movies, Music, Video Games, History, Geography or Animals</i>
           </Typography>
 
@@ -74,12 +74,12 @@ export default function Leaderboard() {
             version of the Game!
           </Typography>
 
-          <Typography variant="body1" paragraph="true">
+          <Typography variant="body1" paragraph={true}>
             You get 10 seconds to answer each question while trying to keep a
             perfect score!
           </Typography>
 
-          <Typography variant="h6" paragraph="true">
+          <Typography variant="h6" paragraph={true}>
             See you on the leaderboards!
           </Typography>
         </div>
