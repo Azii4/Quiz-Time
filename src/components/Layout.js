@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     marginTop: 20,
   },
   footer: {
-    backgroundColor: "#83898E",
+    backgroundColor: "#6471BE",
     height: 40,
     borderRadius: "0 0 1rem 1rem",
     display: "flex",
@@ -48,7 +48,7 @@ const useStyles = makeStyles({
     },
   },
   link: {
-    color: "#4C5055",
+    color: "#FFFFFF",
     fontFamily: "Arial",
   },
 });

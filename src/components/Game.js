@@ -35,7 +35,9 @@ function Game() {
   const [incorrectAnswer, setIncorectAnswer] = useState("");
 
   const counterValue = useRef(questionCounter);
+
   let theme = createMuiTheme();
+
   const useStyles = makeStyles({
     gameContainer: {
       display: "flex",
@@ -61,32 +63,15 @@ function Game() {
         height: "50px",
       },
     },
+
     card: {
-      position: "relative",
-      width: "700px",
-      height: "150px",
-      [theme.breakpoints.down("md")]: {
-        width: "600px",
-        height: "150px",
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "350px",
-        height: "200px",
-      },
-    },
-    question: {
-      position: "absolute",
-      top: "35%",
-      left: "0",
-      right: "0",
-      [theme.breakpoints.down("md")]: {
-        top: "35%",
-        padding: "5%",
-      },
-      [theme.breakpoints.down("xs")]: {
-        top: "25%",
-        padding: "5%",
-      },
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+
+      width: 688,
+      height: 150,
     },
   });
 
@@ -232,16 +217,18 @@ function Game() {
         <div className="game-upper">
           <div className="question-container">
             <Card className={classes.card}>
-              <Typography paragraph="true" className={classes.question}>
+              <Typography className={classes.question}>
                 {decode(questionList[questionCounter]?.question) ??
                   "Loading..."}
               </Typography>
             </Card>
           </div>
         </div>
+
         {isLoaded && gameMode === "1" ? (
           <TimerBar time={timerTime} start={!answered}></TimerBar>
         ) : null}
+
         <div className="game-lower">
           <div className="answer-container">
             <Typography>
@@ -255,6 +242,7 @@ function Game() {
             </Typography>
           </div>
         </div>
+
         <Typography paragraph="true" variant="h4">
           Score: {score}
         </Typography>
