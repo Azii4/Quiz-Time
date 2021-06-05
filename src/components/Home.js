@@ -10,7 +10,7 @@ import {
   Button,
 } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   field: {
     marginBottom: 20,
     display: "block",
@@ -20,9 +20,14 @@ const useStyles = makeStyles({
     marginBottom: 20,
   },
   formControl: {
+    "& .MuiSelect-root": {
+      color: "#FFFFFF",
+      backgroundColor: "#3F51B5",
+    },
+    backgroundColor: theme.palette.background.select,
     marginBottom: 20,
   },
-});
+}));
 
 export default function Home() {
   const classes = useStyles();
