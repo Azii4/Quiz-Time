@@ -76,7 +76,6 @@ function loadSortedTimeAttack() {
 
 function clearTimeAttack() {
   localStorage.removeItem("TimeAttack LeaderBoard");
-  loadSortedTimeAttack();
 }
 
 export default function Standard() {
