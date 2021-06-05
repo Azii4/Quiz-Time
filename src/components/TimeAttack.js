@@ -105,7 +105,12 @@ export default function Standard() {
           ))}
         </TableBody>
       </Table>
-      <Button value="clearLeaderboard" type="submit" onClick={clearTimeAttack}>
+      <Button
+        value="clearLeaderboard"
+        type="submit"
+        onClick={clearTimeAttack}
+        fullWidth
+      >
         Clear Leaderboard
       </Button>
     </TableContainer>
