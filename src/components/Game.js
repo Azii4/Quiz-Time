@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { getQuestions, getCategory } from "../modules/triviaApi";
 import { useLocation, Link } from "react-router-dom";
-import { saveStandard, saveTimeAttack } from "./LocalStorage";
+import { saveStandard, saveTimeAttack } from "../modules/LocalStorage";
 
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import { ButtonGroup, Button, Typography, Card } from "@material-ui/core";
