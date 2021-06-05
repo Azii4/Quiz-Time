@@ -243,7 +243,7 @@ function Game() {
           </div>
         </div>
 
-        <Typography paragraph="true" variant="h4">
+        <Typography paragraph={true} variant="h4">
           Score: {score}
         </Typography>
       </div>
