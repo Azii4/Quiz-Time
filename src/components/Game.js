@@ -7,7 +7,6 @@ import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import { ButtonGroup, Button, Typography, Card } from "@material-ui/core";
 
 import decode from "../modules/decode";
-import "../css/game.css";
 import GameCards from "./GameCards";
 import TimerBar from "./TimerBar";
 
