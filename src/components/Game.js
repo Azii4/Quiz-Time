@@ -4,10 +4,14 @@ import { useLocation, Link } from "react-router-dom";
 import { saveStandard, saveTimeAttack } from "../modules/LocalStorage";
 
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
-import { ButtonGroup, Button, Typography, Card } from "@material-ui/core";
+import {
+  ButtonGroup,
+  Button,
+  Typography,
+  Grid,
+  Paper,
+} from "@material-ui/core";
 
-import decode from "../modules/decode";
-import GameCards from "./GameCards";
 import TimerBar from "./TimerBar";
 
 const questionAmount = 10;
@@ -60,21 +64,17 @@ function Game() {
         height: "50px",
       },
     },
-
-    card: {
+    root: {
+      flexGrow: 1,
+    },
+    paperStyle: {
       display: "flex",
-      flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      [theme.breakpoints.up("md")]: {
-        width: 688,
-        height: 150,
-      },
-      [theme.breakpoints.down("sm")]: {
-        minWidth: 130,
-        minHeight: 80,
-        padding: "5%",
-      },
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+      height: 100,
     },
   });
 
@@ -214,41 +214,70 @@ function Game() {
     );
   }
 
-  if (isLoaded)
+  if (isLoaded) {
     return (
       <div className={classes.gameContainer}>
-        <div className="game-upper">
-          <div className="question-container">
-            <Card className={classes.card}>
-              <Typography className={classes.question}>
-                {decode(questionList[questionCounter]?.question) ??
-                  "Loading..."}
-              </Typography>
-            </Card>
-          </div>
-        </div>
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Paper className={classes.paperStyle}>
+                <Typography
+                  variant="h6"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      questionList[questionCounter]?.question ?? "Loading...",
+                  }}
+                ></Typography>
+              </Paper>
+            </Grid>
 
-        {isLoaded && gameMode === "1" ? (
-          <TimerBar time={timerTime} start={!answered}></TimerBar>
-        ) : null}
+            <Grid item xs={12}>
+              {isLoaded && gameMode === "1" ? (
+                <TimerBar time={timerTime} start={!answered}></TimerBar>
+              ) : null}{" "}
+            </Grid>
+
+            {answerList.map((answer) => (
+              <Grid
+                item
+                xs={6}
+                onClick={() => {
+                  if (!answered) handleButton(answer);
+                }}
+                className={classes.paper}
+                elevation={3}
+                style={{
+                  ...(answered &&
+                  answer === questionList[questionCounter]?.correctAnswer
+                    ? { backgroundColor: "#2ecc71" }
+                    : null),
+                  ...(answered && answer === incorrectAnswer
+                    ? { backgroundColor: "#cc2e2e" }
+                    : null),
+                }}
+              >
+                <Paper className={classes.paperStyle}>
+                  <Typography
+                    variant="button"
+                    dangerouslySetInnerHTML={{ __html: answer }}
+                  ></Typography>
+                </Paper>
+              </Grid>
+            ))}
+            <Grid item xs={12}>
+              <Typography paragraph={true} variant="h4">
+                Score: {score}
+              </Typography>{" "}
+            </Grid>
+          </Grid>
+        </div>
 
         <div className="game-lower">
-          <div className="answer-container">
-            <GameCards
-              answers={answerList}
-              onClick={handleButton}
-              correctAnswer={questionList[questionCounter]?.correctAnswer}
-              incorrectAnswer={incorrectAnswer}
-              answered={answered}
-            />
-          </div>
+          <div className="answer-container"></div>
         </div>
-
-        <Typography paragraph={true} variant="h4">
-          Score: {score}
-        </Typography>
       </div>
     );
+  }
 
   return (
     <div className={classes.gameContainer}>
